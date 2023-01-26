@@ -1,0 +1,20 @@
+void StarterActivate(){
+    int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
+    int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
+    // Serial.println(String(encoderValue) + "___"+ String(gaugeNeoCnt) + "___" + String(motorSpeed));
+    EncoderNeopixelOn(gaugeNeoCnt);
+    EngineSpeeed(motorSpeed);
+    if(gaugeNeoCnt >= NumPixels[GAUGE]){
+        sendCommand("page pgStarterDone");
+        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
+        detachInterrupt(encoderPinA);
+        detachInterrupt(encoderPinB);
+        ptrRfidMode = StartFinish;
+        ptrCurrentMode = RfidLoopMain;
+        BlinkTimer.deleteTimer(blinkTimerId);
+        pixels[STARTER].lightColor(color[GREEN]);
+        GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
+        BlinkTimer.deleteTimer(blinkTimerId);
+        BlinkTimerStart(CIRCUIT, YELLOW);
+    }
+}
