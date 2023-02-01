@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\BBangJun\Final_Code\generator\ArduinoOutput\libraries\ITEADLIB_Arduino_Nextion-master\NexScrolltext.cpp.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Final_Code\generator\ArduinoOutput\libraries\ITEADLIB_Arduino_Nextion-master\NexScrolltext.cpp.o: \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexScrolltext.cpp \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexScrolltext.h \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexTouch.h \

@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\BBangJun\Final_Code\generator\ArduinoOutput\libraries\Adafruit_PN532\Adafruit_PN532.cpp.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Final_Code\generator\ArduinoOutput\libraries\Adafruit_PN532\Adafruit_PN532.cpp.o: \
  C:\Users\HAS1\Documents\Arduino\libraries\Adafruit_PN532\Adafruit_PN532.cpp \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32/Arduino.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32/esp_arduino_version.h \
