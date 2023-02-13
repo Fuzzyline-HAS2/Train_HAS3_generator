@@ -1,4 +1,4 @@
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
  ;/**
 
  * @file Done_Generator_code.ino
@@ -18,18 +18,19 @@
  *
 
  */
-# 12 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
-# 13 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino" 2
+# 12 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
+# 13 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino" 2
 
 void setup() {
     Serial.begin(115200);
+    has2wifi.Setup("badland");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    has2wifi.Setup();
+    // has2wifi.Setup();
     // has2wifi.Setup("tp_link_badland","Code3824@");
     DataChanged();
 }
@@ -37,7 +38,7 @@ void loop() {
     ptrCurrentMode();
     TimerRun();
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Game_system.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Game_system.ino"
 void StarterActivate(){
     int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
     int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
@@ -58,7 +59,7 @@ void StarterActivate(){
         BlinkTimerStart(CIRCUIT, YELLOW);
     }
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur; //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
@@ -77,6 +78,8 @@ void DataChanged()
     }
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){
       if((String)(const char*)my["device_state"] == "repaired_all"){
+        ptrRfidMode = WaitFunc;
+        ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop();
         sendCommand("page pgEscapeOpen");
@@ -172,7 +175,7 @@ void ReadyFunc(void){
     ptrCurrentMode = WaitFunc;
 
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\encoder.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");
@@ -204,7 +207,7 @@ void updateEncoder()
     lastEncoded = encoded; // store this value for next time
 
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\motor.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -229,7 +232,7 @@ void EngineStop()
     digitalWrite(32, 0x0);
     digitalWrite(4, 0x0);
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void NeopixelInit()
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -262,7 +265,7 @@ void AllNeoOn(int neoColor){
   for (int i = 0; i < NeopixelNum; ++i)
     pixels[i].lightColor(color[neoColor]);
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void NextionInit(){
    nexInit();
    nexHwSerial.begin(9600, 0x800001c, 39, 33);
@@ -361,7 +364,7 @@ void PageSend(){
     else if((String)(const char*)my["device_state"] == "starter_finish")
         sendCommand("pgLogin.device_state.val=2");
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void RfidInit()
 {
   RestartPn532:
@@ -591,7 +594,7 @@ void StartFinish()
 //     Serial.println("Not Charged Yet");
 //   }
 // }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void TimerInit(){
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);
     gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);

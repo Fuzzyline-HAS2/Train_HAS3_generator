@@ -13,13 +13,14 @@
 
 void setup() {
     Serial.begin(115200);
+    has2wifi.Setup("badland");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    has2wifi.Setup();
+    // has2wifi.Setup();
     // has2wifi.Setup("tp_link_badland","Code3824@");
     DataChanged();
 }

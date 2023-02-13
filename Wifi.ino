@@ -16,6 +16,8 @@ void DataChanged()
     }
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
       if((String)(const char*)my["device_state"] == "repaired_all"){ 
+        ptrRfidMode = WaitFunc;
+        ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop(); 
         sendCommand("page pgEscapeOpen");
