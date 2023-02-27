@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
  ;/**
  * @file Done_Generator_code.ino
  * @author 김병준 (you@domain.com)
@@ -13,90 +13,91 @@
 
 #include "generator.h"
 
-#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
+#line 14 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
 void setup();
-#line 26 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
+#line 27 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
 void loop();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Game_system.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Game_system.ino"
 void StarterActivate();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void DataChanged();
-#line 69 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 71 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void WaitFunc();
-#line 72 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 74 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void SettingFunc(void);
-#line 87 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 89 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void ActivateFunc(void);
-#line 100 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 102 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void ReadyFunc(void);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\encoder.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\encoder.ino"
 void EncoderInit();
-#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\encoder.ino"
+#line 16 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\encoder.ino"
 void updateEncoder();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\motor.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
 void MotorInit();
-#line 11 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\motor.ino"
+#line 11 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
 void EngineSpeeed(int enginePwm);
-#line 19 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\motor.ino"
+#line 19 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
 void EngineStop();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void NeopixelInit();
-#line 13 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+#line 13 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void EncoderNeopixelOn(int neoNum);
-#line 20 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+#line 20 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void NeoBlink(int neo, int neoColor, int cnt, int blinkTime);
-#line 29 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+#line 29 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void AllNeoOn(int neoColor);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void NextionInit();
-#line 6 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 6 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void DisplayCheck();
-#line 15 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 15 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void NextionReceived(String *nextion_string);
-#line 24 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 24 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void LeftGenerator();
-#line 56 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 56 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void BatteryPackSend();
-#line 88 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 88 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void PageSend();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void RfidInit();
-#line 21 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 21 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void RfidLoopMain();
-#line 43 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 43 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void CheckingPlayers(uint8_t rfidData[32]);
-#line 69 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 69 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void LoginGenerator();
-#line 113 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 113 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void BatteryPackCharge();
-#line 149 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 149 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void BatteryFinish();
-#line 171 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 171 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void StartFinish();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void TimerInit();
-#line 12 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 12 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void WifiIntervalFunc();
-#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 16 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void GameTimerFunc();
-#line 28 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 28 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void LogoutTimerFunc();
-#line 42 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 42 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void BlinkTimerFunc();
-#line 53 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 53 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void BlinkTimerStart(int Neo, int NeoColor);
-#line 59 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 59 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void TimerRun();
-#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\generator.ino"
+#line 14 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
 void setup() {
     Serial.begin(115200);
+    has2wifi.Setup("badland");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    has2wifi.Setup();
+    // has2wifi.Setup();
     // has2wifi.Setup("tp_link_badland","Code3824@");
     DataChanged();
 }
@@ -105,7 +106,7 @@ void loop() {
     TimerRun();
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Game_system.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Game_system.ino"
 void StarterActivate(){
     int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
     int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
@@ -126,7 +127,7 @@ void StarterActivate(){
         BlinkTimerStart(CIRCUIT, YELLOW);
     }
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\Wifi.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur;   //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
@@ -145,6 +146,8 @@ void DataChanged()
     }
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
       if((String)(const char*)my["device_state"] == "repaired_all"){ 
+        ptrRfidMode = WaitFunc;
+        ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop(); 
         sendCommand("page pgEscapeOpen");
@@ -240,7 +243,7 @@ void ReadyFunc(void){
     ptrCurrentMode = WaitFunc;
 
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\encoder.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");
@@ -273,7 +276,7 @@ void updateEncoder()
 
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\motor.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -299,7 +302,7 @@ void EngineStop()
     digitalWrite(MOTOR_INA2_PIN, LOW);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\neopixel.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
 void NeopixelInit()
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -333,7 +336,7 @@ void AllNeoOn(int neoColor){
     pixels[i].lightColor(color[neoColor]);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\nextion.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
 void NextionInit(){
    nexInit();
    nexHwSerial.begin(9600, SERIAL_8N1, NEXTIONHWSERIAL_RX_PIN, NEXTIONHWSERIAL_TX_PIN);
@@ -432,7 +435,7 @@ void PageSend(){
     else if((String)(const char*)my["device_state"] == "starter_finish")
         sendCommand("pgLogin.device_state.val=2");
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\rfid.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
 void RfidInit()
 {
   RestartPn532:
@@ -663,7 +666,7 @@ void StartFinish()
 //   }
 // }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\generator\\timer.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
 void TimerInit(){
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);
     gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);
