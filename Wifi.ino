@@ -20,6 +20,10 @@ void DataChanged()
         EngineStop(); 
         sendCommand("page pgEscapeOpen");
         LeftGenerator();
+        GameTimer.deleteTimer(gameTimerId);
+        LogoutTimer.deleteTimer(logoutTimerId);
+        BlinkTimer.deleteTimer(blinkTimerId);
+        AllNeoOn(BLUE);
       }
       else if((String)(const char*)my["device_state"] == "repaired"){
         Serial.println("StartFinish PTRFUNC");
