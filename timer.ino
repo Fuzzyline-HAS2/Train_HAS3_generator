@@ -15,7 +15,7 @@ void WifiIntervalFunc(){
 
 void GameTimerFunc(){
     gameTimerCnt++;
-    Serial.println("gameTimerCnt:" + (String)gameTimerCnt);
+    // Serial.println("gameTimerCnt:" + (String)gameTimerCnt);
     if(gameTimerCnt == 5){ // 0.5s x 6 =3sec
         encoderValue = encoderValue - (starterNeoDivider*0.01); //초마다 전체량에서 1프로씩 감소
         gameTimerCnt = 3;
@@ -27,7 +27,7 @@ void GameTimerFunc(){
 }
 void LogoutTimerFunc(){
     logoutTimerCnt++;
-    Serial.println("LogoutTimerCnt:" + (String)logoutTimerCnt);
+    // Serial.println("LogoutTimerCnt:" + (String)logoutTimerCnt);
     if(logoutTimerCnt >= 12){
         Serial.println("LogOutTimer TimeOUT");
         LogoutTimer.deleteTimer(logoutTimerId);        //로그아웃 타이머 종료
@@ -40,7 +40,7 @@ void LogoutTimerFunc(){
 }
 
 void BlinkTimerFunc(){
-    Serial.println("Blink!");
+    // Serial.println("Blink!");
     if(blinkOn == true){
         pixels[blinkNeo].lightColor(color[blinkColor]);
         blinkOn = false;

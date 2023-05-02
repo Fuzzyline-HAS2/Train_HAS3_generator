@@ -1,4 +1,4 @@
-#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.h"
+#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\generator.h"
 #ifndef _DONE_ITEMBOX_CODE_
 #define _DONE_ITEMBOX_CODE_
 
@@ -6,7 +6,7 @@
 const int rfid_num = 1; // 설치된 pn532의 개수
 
 //****************************************WIFI****************************************************************
-HAS2_Wifi has2wifi;
+HAS2_Wifi has2wifi("http://172.30.1.44");
 void DataChanged();
 void SettingFunc(void);
 void ActivateFunc(void);

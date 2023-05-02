@@ -13,15 +13,15 @@
 
 void setup() {
     Serial.begin(115200);
-    has2wifi.Setup("badland");
+    has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
+//    has2wifi.Setup("badland");
+    // has2wifi.Setup("city");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    // has2wifi.Setup();
-    // has2wifi.Setup("tp_link_badland","Code3824@");
     DataChanged();
 }
 void loop() {

@@ -1,19 +1,22 @@
 void DataChanged()
 {
   static StaticJsonDocument<500> cur;   //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
-  if(receiveMineOn == false){
-    if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){  
-      if((String)(const char*)my["game_state"] == "setting"){
-        SettingFunc();
-      }
-      else if((String)(const char*)my["game_state"] == "ready"){
-        ReadyFunc();
-      }
-      else if((String)(const char*)my["game_state"] == "activate"){
-        ActivateFunc();
-        LeftGenerator();
-      }
+  if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){  
+    if((String)(const char*)my["game_state"] == "setting"){
+      SettingFunc();
     }
+    else if((String)(const char*)my["game_state"] == "ready"){
+      ReadyFunc();
+    }
+    else if((String)(const char*)my["game_state"] == "activate"){
+      ActivateFunc();
+      LeftGenerator();
+    }
+  } 
+  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){  
+        LeftGenerator();
+  }
+  if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
       if((String)(const char*)my["device_state"] == "repaired_all"){ 
         ptrRfidMode = WaitFunc;
@@ -67,9 +70,6 @@ void DataChanged()
   else{
     receiveMineOn = false;
   }
-  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){  
-        LeftGenerator();
-  }
   cur = my; // cur 데이터 그룹에 현재 읽어온 데이터 저장
 }
 void WaitFunc(){
@@ -89,6 +89,7 @@ void SettingFunc(void){
     BlinkTimer.deleteTimer(blinkTimerId);
     ptrRfidMode = WaitFunc;
     ptrCurrentMode = WaitFunc;
+    receiveMineOn = false;
 }
 void ActivateFunc(void){
     Serial.println("ACTIVATE");

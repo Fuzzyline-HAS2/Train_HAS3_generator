@@ -5,7 +5,7 @@
 const int rfid_num = 1; // 설치된 pn532의 개수
 
 //****************************************WIFI****************************************************************
-HAS2_Wifi has2wifi;
+HAS2_Wifi has2wifi("http://172.30.1.44");
 void DataChanged();
 void SettingFunc(void);
 void ActivateFunc(void);

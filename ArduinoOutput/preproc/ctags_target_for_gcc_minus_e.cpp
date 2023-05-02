@@ -1,4 +1,4 @@
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
  ;/**
 
  * @file Done_Generator_code.ino
@@ -18,38 +18,40 @@
  *
 
  */
-# 12 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino"
-# 13 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\generator.ino" 2
+# 12 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
+# 13 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino" 2
 
 void setup() {
     Serial.begin(115200);
-    has2wifi.Setup("badland");
+    has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
+//    has2wifi.Setup("badland");
+    // has2wifi.Setup("city");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    // has2wifi.Setup();
-    // has2wifi.Setup("tp_link_badland","Code3824@");
     DataChanged();
 }
 void loop() {
     ptrCurrentMode();
     TimerRun();
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Game_system.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\Game_system.ino"
 void StarterActivate(){
-    int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
-    int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
+    // int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
+    // int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
     // Serial.println(String(encoderValue) + "___"+ String(gaugeNeoCnt) + "___" + String(motorSpeed));
+    int gaugeNeoCnt = encoderValue / 4000;
+    Serial.println(gaugeNeoCnt);
     EncoderNeopixelOn(gaugeNeoCnt);
-    EngineSpeeed(motorSpeed);
+    EngineSpeeed(gaugeNeoCnt*8);
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
-        sendCommand("page pgStarterDone");
-        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
         detachInterrupt(13);
         detachInterrupt(15);
+        sendCommand("page pgStarterDone");
+        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
         ptrRfidMode = StartFinish;
         ptrCurrentMode = RfidLoopMain;
         BlinkTimer.deleteTimer(blinkTimerId);
@@ -59,23 +61,26 @@ void StarterActivate(){
         BlinkTimerStart(CIRCUIT, YELLOW);
     }
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\Wifi.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur; //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
-  if(receiveMineOn == false){
-    if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
-      if((String)(const char*)my["game_state"] == "setting"){
-        SettingFunc();
-      }
-      else if((String)(const char*)my["game_state"] == "ready"){
-        ReadyFunc();
-      }
-      else if((String)(const char*)my["game_state"] == "activate"){
-        ActivateFunc();
-        LeftGenerator();
-      }
+  if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
+    if((String)(const char*)my["game_state"] == "setting"){
+      SettingFunc();
     }
+    else if((String)(const char*)my["game_state"] == "ready"){
+      ReadyFunc();
+    }
+    else if((String)(const char*)my["game_state"] == "activate"){
+      ActivateFunc();
+      LeftGenerator();
+    }
+  }
+  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
+        LeftGenerator();
+  }
+  if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){
       if((String)(const char*)my["device_state"] == "repaired_all"){
         ptrRfidMode = WaitFunc;
@@ -84,6 +89,10 @@ void DataChanged()
         EngineStop();
         sendCommand("page pgEscapeOpen");
         LeftGenerator();
+        GameTimer.deleteTimer(gameTimerId);
+        LogoutTimer.deleteTimer(logoutTimerId);
+        BlinkTimer.deleteTimer(blinkTimerId);
+        AllNeoOn(BLUE);
       }
       else if((String)(const char*)my["device_state"] == "repaired"){
         Serial.println("StartFinish PTRFUNC");
@@ -125,9 +134,6 @@ void DataChanged()
   else{
     receiveMineOn = false;
   }
-  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
-        LeftGenerator();
-  }
   cur = my; // cur 데이터 그룹에 현재 읽어온 데이터 저장
 }
 void WaitFunc(){
@@ -147,6 +153,7 @@ void SettingFunc(void){
     BlinkTimer.deleteTimer(blinkTimerId);
     ptrRfidMode = WaitFunc;
     ptrCurrentMode = WaitFunc;
+    receiveMineOn = false;
 }
 void ActivateFunc(void){
     Serial.println("ACTIVATE");
@@ -175,7 +182,7 @@ void ReadyFunc(void){
     ptrCurrentMode = WaitFunc;
 
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\encoder.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");
@@ -202,12 +209,12 @@ void updateEncoder()
     int encoded = (MSB << 1) | LSB; // converting the 2 pin value to single number
     int sum = (lastEncoded << 2) | encoded; // adding it to the previous encoded value
 
-    if (sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011);
+    if (sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011) encoderValue++;
     if (sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) encoderValue++;
     lastEncoded = encoded; // store this value for next time
 
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\motor.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -232,7 +239,7 @@ void EngineStop()
     digitalWrite(32, 0x0);
     digitalWrite(4, 0x0);
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\neopixel.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
 void NeopixelInit()
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -265,7 +272,7 @@ void AllNeoOn(int neoColor){
   for (int i = 0; i < NeopixelNum; ++i)
     pixels[i].lightColor(color[neoColor]);
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\nextion.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
 void NextionInit(){
    nexInit();
    nexHwSerial.begin(9600, 0x800001c, 39, 33);
@@ -364,21 +371,21 @@ void PageSend(){
     else if((String)(const char*)my["device_state"] == "starter_finish")
         sendCommand("pgLogin.device_state.val=2");
 }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\rfid.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
 void RfidInit()
 {
   RestartPn532:
   nfc[MAINPN532].begin();
   if (!(nfc[MAINPN532].getFirmwareVersion()))
   {
-    Serial.println("PN532 연결실패 : MAINPN532");
+    Serial.println("PN532 FAIL : MAINPN532");
     AllNeoOn(RED);
     goto RestartPn532;
   }
   else
   {
     nfc[MAINPN532].SAMConfig();
-    Serial.println("PN532 연결성공 : MAINPN532");
+    Serial.println("PN532 SUCC : MAINPN532");
     rfid_init_complete[MAINPN532] = true;
 
   }
@@ -523,8 +530,6 @@ void BatteryFinish()
   logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   AllNeoOn(GREEN);
   Serial.println("Battery Finish Func!");
-  attachInterrupt(13, updateEncoder, 0x03);
-  attachInterrupt(15, updateEncoder, 0x03);
   encoderValue = 1;
   GameTimer.deleteTimer(gameTimerId);
   gameTimerCnt = 0;
@@ -533,6 +538,8 @@ void BatteryFinish()
   BlinkTimerStart(STARTER, YELLOW);
   LeftGenerator();
   ptrCurrentMode = StarterActivate;
+  attachInterrupt(13, updateEncoder, 0x03);
+  attachInterrupt(15, updateEncoder, 0x03);
 }
 
 void StartFinish()
@@ -594,7 +601,7 @@ void StartFinish()
 //     Serial.println("Not Charged Yet");
 //   }
 // }
-# 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\generator\\timer.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
 void TimerInit(){
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);
     gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);
@@ -612,7 +619,7 @@ void WifiIntervalFunc(){
 
 void GameTimerFunc(){
     gameTimerCnt++;
-    Serial.println("gameTimerCnt:" + (String)gameTimerCnt);
+    // Serial.println("gameTimerCnt:" + (String)gameTimerCnt);
     if(gameTimerCnt == 5){ // 0.5s x 6 =3sec
         encoderValue = encoderValue - (starterNeoDivider*0.01); //초마다 전체량에서 1프로씩 감소
         gameTimerCnt = 3;
@@ -624,7 +631,7 @@ void GameTimerFunc(){
 }
 void LogoutTimerFunc(){
     logoutTimerCnt++;
-    Serial.println("LogoutTimerCnt:" + (String)logoutTimerCnt);
+    // Serial.println("LogoutTimerCnt:" + (String)logoutTimerCnt);
     if(logoutTimerCnt >= 12){
         Serial.println("LogOutTimer TimeOUT");
         LogoutTimer.deleteTimer(logoutTimerId); //로그아웃 타이머 종료
@@ -637,7 +644,7 @@ void LogoutTimerFunc(){
 }
 
 void BlinkTimerFunc(){
-    Serial.println("Blink!");
+    // Serial.println("Blink!");
     if(blinkOn == true){
         pixels[blinkNeo].lightColor(color[blinkColor]);
         blinkOn = false;

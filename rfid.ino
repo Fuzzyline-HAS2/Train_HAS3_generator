@@ -4,14 +4,14 @@ void RfidInit()
   nfc[MAINPN532].begin();
   if (!(nfc[MAINPN532].getFirmwareVersion()))
   {
-    Serial.println("PN532 연결실패 : MAINPN532");
+    Serial.println("PN532 FAIL : MAINPN532");
     AllNeoOn(RED);
     goto RestartPn532;
   }
   else
   {
     nfc[MAINPN532].SAMConfig();
-    Serial.println("PN532 연결성공 : MAINPN532");
+    Serial.println("PN532 SUCC : MAINPN532");
     rfid_init_complete[MAINPN532] = true;
     
   }
@@ -156,8 +156,6 @@ void BatteryFinish()
   logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   AllNeoOn(GREEN);
   Serial.println("Battery Finish Func!");
-  attachInterrupt(encoderPinA, updateEncoder, CHANGE);
-  attachInterrupt(encoderPinB, updateEncoder, CHANGE);
   encoderValue = 1;
   GameTimer.deleteTimer(gameTimerId);
   gameTimerCnt = 0;
@@ -166,6 +164,8 @@ void BatteryFinish()
   BlinkTimerStart(STARTER, YELLOW);
   LeftGenerator();
   ptrCurrentMode = StarterActivate;
+  attachInterrupt(encoderPinA, updateEncoder, CHANGE);
+  attachInterrupt(encoderPinB, updateEncoder, CHANGE);
 }
 
 void StartFinish()
