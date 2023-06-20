@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\generator\ArduinoOutput\libraries\Update\HttpsOTAUpdate.cpp.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\libraries\Update\HttpsOTAUpdate.cpp.o: \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\libraries\Update\src\HttpsOTAUpdate.cpp \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/freertos/include/esp_additions/freertos/FreeRTOSConfig.h \

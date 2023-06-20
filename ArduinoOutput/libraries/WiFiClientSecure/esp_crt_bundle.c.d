@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\generator\ArduinoOutput\libraries\WiFiClientSecure\esp_crt_bundle.c.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\libraries\WiFiClientSecure\esp_crt_bundle.c.o: \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\libraries\WiFiClientSecure\src\esp_crt_bundle.c \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/esp_system/include/esp_system.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/esp_common/include/esp_err.h \

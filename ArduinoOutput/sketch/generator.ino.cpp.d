@@ -1,5 +1,5 @@
-c:\Users\HAS1\Desktop\generator\ArduinoOutput\sketch\generator.ino.cpp.o: \
- c:\Users\HAS1\Desktop\generator\ArduinoOutput\sketch\generator.ino.cpp \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\sketch\generator.ino.cpp.o: \
+ c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\sketch\generator.ino.cpp \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32/Arduino.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32/esp_arduino_version.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -128,8 +128,8 @@ c:\Users\HAS1\Desktop\generator\ArduinoOutput\sketch\generator.ino.cpp.o: \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
- c:\Users\HAS1\Desktop\generator\ArduinoOutput\sketch\generator.h \
- c:\Users\HAS1\Desktop\generator\ArduinoOutput\sketch\Library_and_pin.h \
+ c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\sketch\generator.h \
+ c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\sketch\Library_and_pin.h \
  C:\Users\HAS1\Documents\Arduino\libraries\Adafruit_PN532/Adafruit_PN532.h \
  C:\Users\HAS1\Documents\Arduino\libraries\Adafruit_BusIO/Adafruit_SPIDevice.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\libraries\SPI\src/SPI.h \

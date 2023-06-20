@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\generator\ArduinoOutput\core\esp32-hal-i2c.c.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\core\esp32-hal-i2c.c.o: \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32\esp32-hal-i2c.c \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4\cores\esp32\esp32-hal-i2c.h \
  C:\Users\HAS1\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.4/tools/sdk/esp32/include/esp_common/include/esp_err.h \

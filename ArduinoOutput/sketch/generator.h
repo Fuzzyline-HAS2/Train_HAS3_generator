@@ -1,4 +1,4 @@
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\generator.h"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\generator.h"
 #ifndef _DONE_ITEMBOX_CODE_
 #define _DONE_ITEMBOX_CODE_
 
@@ -53,7 +53,7 @@ volatile unsigned int gameTimerCnt;
 HardwareSerial nexHwSerial(2);
 String nextion_str = "";
 int currner_page_num;
-
+void NextionInit();
 void DisplayCheck();
 void NextionReceived();
 void LeftGenerator();

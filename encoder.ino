@@ -3,7 +3,7 @@ void EncoderInit()
     Serial.println("ENCODER INIT");
     pinMode(encoderPinA, INPUT);
     pinMode(encoderPinB, INPUT);
-    pinMode(buttonPin, INPUT_PULLUP);
+    // pinMode(buttonPin, INPUT_PULLUP);
     
     digitalWrite(encoderPinA, HIGH); // turn pullup resistor on
     digitalWrite(encoderPinB, HIGH); // turn pullup resistor on

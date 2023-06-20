@@ -1,4 +1,5 @@
-void NextionInit(){
+void NextionInit()
+{
    nexInit();
    nexHwSerial.begin(9600, SERIAL_8N1, NEXTIONHWSERIAL_RX_PIN, NEXTIONHWSERIAL_TX_PIN);
 }
@@ -17,39 +18,53 @@ void NextionReceived(String *nextion_string)
  if (*nextion_string == "test")
  {
    sendCommand("page pgItemTaken");
-   sendCommand("quizSolved.en=1");
+   sendCommand("wQuizSolved.en=1");
  }
 }
 
+void SendCmd(String command)
+{
+    String cmd = "";
+    if (command.startsWith("page") && (String)(const char *)shift_machine["selected_language"] == "EN")
+    {
+        cmd = "page E"+ command.substring(5);
+    }
+    else
+    {
+        cmd = command;
+    }
+    sendCommand(cmd.c_str());
+}
 void LeftGenerator(){
+
     if((int)my["left_generator"] == 5)
     {
         sendCommand("pgLocked.vLeftGen.val=5");
-        sendCommand("pleftDevice.pic=15");
+        sendCommand("pleftDevice.pic=42");
         Serial.println("left Generator 5");
     }
     else if((int)my["left_generator"] == 4)
     {
         sendCommand("pgLocked.vLeftGen.val=4");
-        sendCommand("pleftDevice.pic=14");
+        sendCommand("pleftDevice.pic=41");
         Serial.println("left Generator 4");
     }
     else if((int)my["left_generator"] == 3)
     {
         sendCommand("pgLocked.vLeftGen.val=3");
-        sendCommand("pleftDevice.pic=13");
+        sendCommand("pleftDevice.pic=40");
         Serial.println("left Generator 3");
     }
     else if((int)my["left_generator"] == 2)
     {
         sendCommand("pgLocked.vLeftGen.val=2");
-        sendCommand("pleftDevice.pic=12");
+        sendCommand("pleftDevice.pic=39");
         Serial.println("left Generator 2");
     }
     else if((int)my["left_generator"] == 1)
     {
         sendCommand("pgLocked.vLeftGen.val=1");
-        sendCommand("pleftDevice.pic=11");
+        sendCommand("pleftDevice.pic=38");
         Serial.println("left Generator 1");
     }
 }

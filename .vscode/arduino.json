@@ -3,5 +3,5 @@
     "sketch": "generator.ino",
     "configuration": "PartitionScheme=default,FlashMode=qio,FlashFreq=80,UploadSpeed=921600,DebugLevel=none",
     "board": "esp32:esp32:esp32wrover",
-    "port": "COM38"
+    "port": "COM6"
 }

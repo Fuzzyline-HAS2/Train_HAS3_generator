@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\generator.ino"
  ;/**
  * @file Done_Generator_code.ino
  * @author 김병준 (you@domain.com)
@@ -13,92 +13,94 @@
 
 #include "generator.h"
 
-#line 14 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
+#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\generator.ino"
 void setup();
-#line 27 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
+#line 27 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\generator.ino"
 void loop();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\Game_system.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Game_system.ino"
 void StarterActivate();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void DataChanged();
-#line 75 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 75 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void WaitFunc();
-#line 78 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 78 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void SettingFunc(void);
-#line 94 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 94 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void ActivateFunc(void);
-#line 107 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 107 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void ReadyFunc(void);
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\encoder.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\encoder.ino"
 void EncoderInit();
-#line 16 "c:\\Users\\HAS1\\Desktop\\generator\\encoder.ino"
+#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\encoder.ino"
 void updateEncoder();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\motor.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\motor.ino"
 void MotorInit();
-#line 11 "c:\\Users\\HAS1\\Desktop\\generator\\motor.ino"
+#line 11 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\motor.ino"
 void EngineSpeeed(int enginePwm);
-#line 19 "c:\\Users\\HAS1\\Desktop\\generator\\motor.ino"
+#line 19 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\motor.ino"
 void EngineStop();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\neopixel.ino"
 void NeopixelInit();
-#line 13 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
+#line 13 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\neopixel.ino"
 void EncoderNeopixelOn(int neoNum);
-#line 20 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
+#line 20 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\neopixel.ino"
 void NeoBlink(int neo, int neoColor, int cnt, int blinkTime);
-#line 29 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
+#line 29 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\neopixel.ino"
 void AllNeoOn(int neoColor);
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void NextionInit();
-#line 6 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 7 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void DisplayCheck();
-#line 15 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void NextionReceived(String *nextion_string);
-#line 24 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 25 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
+void SendCmd(String command);
+#line 38 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void LeftGenerator();
-#line 56 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 71 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void BatteryPackSend();
-#line 88 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
+#line 103 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
 void PageSend();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void RfidInit();
-#line 21 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 21 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void RfidLoopMain();
-#line 43 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 43 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void CheckingPlayers(uint8_t rfidData[32]);
-#line 69 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 69 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void LoginGenerator();
-#line 113 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 113 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void BatteryPackCharge();
-#line 149 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 149 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void BatteryFinish();
-#line 171 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 171 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void StartFinish();
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void TimerInit();
-#line 12 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 12 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void WifiIntervalFunc();
-#line 16 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void GameTimerFunc();
-#line 28 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 28 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void LogoutTimerFunc();
-#line 42 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 42 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void BlinkTimerFunc();
-#line 53 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 53 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void BlinkTimerStart(int Neo, int NeoColor);
-#line 59 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 59 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void TimerRun();
-#line 14 "c:\\Users\\HAS1\\Desktop\\generator\\generator.ino"
+#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\generator.ino"
 void setup() {
     Serial.begin(115200);
-    has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
-//    has2wifi.Setup("badland");
-    // has2wifi.Setup("city");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
+// has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
+ has2wifi.Setup("badland");
+//    has2wifi.Setup("city");
     DataChanged();
 }
 void loop() {
@@ -106,7 +108,7 @@ void loop() {
     TimerRun();
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\Game_system.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Game_system.ino"
 void StarterActivate(){
     // int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
     // int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
@@ -118,7 +120,7 @@ void StarterActivate(){
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
         detachInterrupt(encoderPinA);
         detachInterrupt(encoderPinB);
-        sendCommand("page pgStarterDone");
+        SendCmd("page pgStarterDone");
         has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
         ptrRfidMode = StartFinish;
         ptrCurrentMode = RfidLoopMain;
@@ -129,7 +131,7 @@ void StarterActivate(){
         BlinkTimerStart(CIRCUIT, YELLOW);
     }
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\Wifi.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur;   //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
@@ -146,7 +148,7 @@ void DataChanged()
     }
   } 
   if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){  
-        LeftGenerator();
+    LeftGenerator();
   }
   if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
@@ -155,7 +157,7 @@ void DataChanged()
         ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop(); 
-        sendCommand("page pgEscapeOpen");
+        SendCmd("page pgEscapeOpen");
         LeftGenerator();
         GameTimer.deleteTimer(gameTimerId);
         LogoutTimer.deleteTimer(logoutTimerId);
@@ -168,7 +170,7 @@ void DataChanged()
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
         Serial.println("Generator Fixed!");
-        sendCommand("page pgFixed");
+        SendCmd("page pgFixed");
         LeftGenerator();
         AllNeoOn(BLUE);
         ledcWrite(MotorLedChannel, 250);
@@ -189,13 +191,13 @@ void DataChanged()
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(BLUE);
-        sendCommand("page pgPlayerWin");
+        SendCmd("page pgPlayerWin");
       }
       else if((String)(const char*)my["device_state"] == "player_lose"){ 
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(RED);
-        sendCommand("page pgPlayerLose");
+        SendCmd("page pgPlayerLose");
       } 
     }
   }
@@ -209,7 +211,7 @@ void WaitFunc(){
 }
 void SettingFunc(void){
     Serial.println("SETTING");
-    sendCommand("page pgBeforeTagger");
+    SendCmd("page pgBeforeTagger");
     LeftGenerator();
     AllNeoOn(WHITE);
     EngineStop();
@@ -226,7 +228,7 @@ void SettingFunc(void){
 void ActivateFunc(void){
     Serial.println("ACTIVATE");
     AllNeoOn(YELLOW);
-    sendCommand("page pgLocked");
+    SendCmd("page pgLocked");
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
@@ -239,7 +241,7 @@ void ActivateFunc(void){
 void ReadyFunc(void){
     Serial.println("READY");
     AllNeoOn(RED);
-    sendCommand("page pgBeforeTagger");
+    SendCmd("page pgPreTagger");
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
@@ -250,13 +252,13 @@ void ReadyFunc(void){
     ptrCurrentMode = WaitFunc;
 
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\encoder.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");
     pinMode(encoderPinA, INPUT);
     pinMode(encoderPinB, INPUT);
-    pinMode(buttonPin, INPUT_PULLUP);
+    // pinMode(buttonPin, INPUT_PULLUP);
     
     digitalWrite(encoderPinA, HIGH); // turn pullup resistor on
     digitalWrite(encoderPinB, HIGH); // turn pullup resistor on
@@ -283,7 +285,7 @@ void updateEncoder()
 
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\motor.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -309,7 +311,7 @@ void EngineStop()
     digitalWrite(MOTOR_INA2_PIN, LOW);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\neopixel.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\neopixel.ino"
 void NeopixelInit()
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -343,8 +345,9 @@ void AllNeoOn(int neoColor){
     pixels[i].lightColor(color[neoColor]);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\nextion.ino"
-void NextionInit(){
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\nextion.ino"
+void NextionInit()
+{
    nexInit();
    nexHwSerial.begin(9600, SERIAL_8N1, NEXTIONHWSERIAL_RX_PIN, NEXTIONHWSERIAL_TX_PIN);
 }
@@ -363,39 +366,53 @@ void NextionReceived(String *nextion_string)
  if (*nextion_string == "test")
  {
    sendCommand("page pgItemTaken");
-   sendCommand("quizSolved.en=1");
+   sendCommand("wQuizSolved.en=1");
  }
 }
 
+void SendCmd(String command)
+{
+    String cmd = "";
+    if (command.startsWith("page") && (String)(const char *)shift_machine["selected_language"] == "EN")
+    {
+        cmd = "page E"+ command.substring(5);
+    }
+    else
+    {
+        cmd = command;
+    }
+    sendCommand(cmd.c_str());
+}
 void LeftGenerator(){
+
     if((int)my["left_generator"] == 5)
     {
         sendCommand("pgLocked.vLeftGen.val=5");
-        sendCommand("pleftDevice.pic=15");
+        sendCommand("pleftDevice.pic=42");
         Serial.println("left Generator 5");
     }
     else if((int)my["left_generator"] == 4)
     {
         sendCommand("pgLocked.vLeftGen.val=4");
-        sendCommand("pleftDevice.pic=14");
+        sendCommand("pleftDevice.pic=41");
         Serial.println("left Generator 4");
     }
     else if((int)my["left_generator"] == 3)
     {
         sendCommand("pgLocked.vLeftGen.val=3");
-        sendCommand("pleftDevice.pic=13");
+        sendCommand("pleftDevice.pic=40");
         Serial.println("left Generator 3");
     }
     else if((int)my["left_generator"] == 2)
     {
         sendCommand("pgLocked.vLeftGen.val=2");
-        sendCommand("pleftDevice.pic=12");
+        sendCommand("pleftDevice.pic=39");
         Serial.println("left Generator 2");
     }
     else if((int)my["left_generator"] == 1)
     {
         sendCommand("pgLocked.vLeftGen.val=1");
-        sendCommand("pleftDevice.pic=11");
+        sendCommand("pleftDevice.pic=38");
         Serial.println("left Generator 1");
     }
 }
@@ -442,7 +459,7 @@ void PageSend(){
     else if((String)(const char*)my["device_state"] == "starter_finish")
         sendCommand("pgLogin.device_state.val=2");
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\rfid.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\rfid.ino"
 void RfidInit()
 {
   RestartPn532:
@@ -516,7 +533,7 @@ void LoginGenerator()
   Serial.println("LoginGenerator PTRFUNC");
   BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
   PageSend();                                       //로그인 페이지 다음에 나올 페이지 지정
-  sendCommand("page pgLogin");
+  SendCmd("page pgLogin");
   LeftGenerator();
   delay(3500);
   BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
@@ -546,9 +563,9 @@ void LoginGenerator()
       AllNeoOn(GREEN);
       // has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
       Serial.println("Battery Full!");              
-      sendCommand("page pgBatteryMax");
+      SendCmd("page pgBatteryMax");
       delay(100);
-      sendCommand("wBatteryFull.en=1");
+      SendCmd("wBatteryFull.en=1");
       BlinkTimer.deleteTimer(blinkTimerId);
       BlinkTimerStart(CIRCUIT, YELLOW);
     }
@@ -561,7 +578,7 @@ void BatteryPackCharge()
   // LogoutTimer.restartTimer(logoutTimerId);
   logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   if((int)tag["battery_pack"] != 0 && (int)my["battery_pack"] < (int)my["max_battery_pack"]){    //발전기에 필요한 배터리팩 개수 > 플레이어가 소지한 배터리팩 개수
-    sendCommand("wBatteryCharge.en=1");
+    SendCmd("wBatteryCharge.en=1");
     Serial.println("BatteyPack Charge");
     has2wifi.Send((String)(const char*)tag["device_name"], "battery_pack", ("-1"));
     has2wifi.Send((String)(const char*)my["device_name"], "battery_pack", ("+1"));
@@ -574,9 +591,9 @@ void BatteryPackCharge()
       AllNeoOn(GREEN);
       // has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
       Serial.println("Battery Full!");              
-      sendCommand("page pgBatteryMax");
+      SendCmd("page pgBatteryMax");
       delay(100);
-      sendCommand("wBatteryFull.en=1");
+      SendCmd("wBatteryFull.en=1");
       BlinkTimer.deleteTimer(blinkTimerId);
       BlinkTimerStart(CIRCUIT, YELLOW);
     }
@@ -594,9 +611,9 @@ void BatteryPackCharge()
 void BatteryFinish()
 {
   has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
-  sendCommand("page pgStarter");
+  SendCmd("page pgStarter");
   delay(10);
-  sendCommand("wStaterOn.en=1");
+  SendCmd("wStaterOn.en=1");
   LeftGenerator();
   logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   AllNeoOn(GREEN);
@@ -620,7 +637,7 @@ void StartFinish()
   GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료3
   BlinkTimer.deleteTimer(blinkTimerId);
   Serial.println("Generator Fixed!");
-  sendCommand("page pgFixed");
+  SendCmd("page pgFixed");
   has2wifi.Send((String)(const char*)my["device_name"], "device_state", "repaired");
   receiveMineOn = true;
   has2wifi.ReceiveMine();
@@ -661,7 +678,7 @@ void StartFinish()
 //     encoderValue = 1;
 //     gameTimerId = GameTimer.setInterval(1000,GameTimerFunc);
 //     AllNeoOn(GREEN);
-//     sendCommand("page pgStarter");
+//     SendCmd("page pgStarter");
 //     LeftGenerator();
 //     ptrCurrentMode = StarterActivate;
 //   }
@@ -673,7 +690,7 @@ void StartFinish()
 //   }
 // }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\generator\\timer.ino"
+#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Code\\HAS2_Final_Code\\generator\\timer.ino"
 void TimerInit(){
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);
     gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);

@@ -14,7 +14,7 @@ void DataChanged()
     }
   } 
   if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){  
-        LeftGenerator();
+    LeftGenerator();
   }
   if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
@@ -23,7 +23,7 @@ void DataChanged()
         ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop(); 
-        sendCommand("page pgEscapeOpen");
+        SendCmd("page pgEscapeOpen");
         LeftGenerator();
         GameTimer.deleteTimer(gameTimerId);
         LogoutTimer.deleteTimer(logoutTimerId);
@@ -36,7 +36,7 @@ void DataChanged()
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
         Serial.println("Generator Fixed!");
-        sendCommand("page pgFixed");
+        SendCmd("page pgFixed");
         LeftGenerator();
         AllNeoOn(BLUE);
         ledcWrite(MotorLedChannel, 250);
@@ -57,13 +57,13 @@ void DataChanged()
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(BLUE);
-        sendCommand("page pgPlayerWin");
+        SendCmd("page pgPlayerWin");
       }
       else if((String)(const char*)my["device_state"] == "player_lose"){ 
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(RED);
-        sendCommand("page pgPlayerLose");
+        SendCmd("page pgPlayerLose");
       } 
     }
   }
@@ -77,7 +77,7 @@ void WaitFunc(){
 }
 void SettingFunc(void){
     Serial.println("SETTING");
-    sendCommand("page pgBeforeTagger");
+    SendCmd("page pgBeforeTagger");
     LeftGenerator();
     AllNeoOn(WHITE);
     EngineStop();
@@ -94,7 +94,7 @@ void SettingFunc(void){
 void ActivateFunc(void){
     Serial.println("ACTIVATE");
     AllNeoOn(YELLOW);
-    sendCommand("page pgLocked");
+    SendCmd("page pgLocked");
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
@@ -107,7 +107,7 @@ void ActivateFunc(void){
 void ReadyFunc(void){
     Serial.println("READY");
     AllNeoOn(RED);
-    sendCommand("page pgBeforeTagger");
+    SendCmd("page pgPreTagger");
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);

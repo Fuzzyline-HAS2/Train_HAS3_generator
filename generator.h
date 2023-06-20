@@ -52,7 +52,7 @@ volatile unsigned int gameTimerCnt;
 HardwareSerial nexHwSerial(2);
 String nextion_str = "";
 int currner_page_num;
-
+void NextionInit();
 void DisplayCheck();
 void NextionReceived();
 void LeftGenerator();

@@ -9,7 +9,7 @@ void StarterActivate(){
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
         detachInterrupt(encoderPinA);
         detachInterrupt(encoderPinB);
-        sendCommand("page pgStarterDone");
+        SendCmd("page pgStarterDone");
         has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
         ptrRfidMode = StartFinish;
         ptrCurrentMode = RfidLoopMain;

@@ -1,4 +1,4 @@
-c:\Users\HAS1\Desktop\generator\ArduinoOutput\libraries\ITEADLIB_Arduino_Nextion-master\NexPage.cpp.o: \
+c:\Users\HAS1\Desktop\BBangJun\HAS2_Code\HAS2_Final_Code\generator\ArduinoOutput\libraries\ITEADLIB_Arduino_Nextion-master\NexPage.cpp.o: \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexPage.cpp \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexPage.h \
  C:\Users\HAS1\Documents\Arduino\libraries\ITEADLIB_Arduino_Nextion-master\NexTouch.h \
