@@ -35,10 +35,8 @@ void StarterActivate(){
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
         detachInterrupt(encoderPinA);
         detachInterrupt(encoderPinB);
-        SendCmd("page pgStarterDone");
-        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "starter_finish");
-        ptrRfidMode = StartFinish;
-        ptrCurrentMode = RfidLoopMain;
+        SendCmd("page pgFixed");
+        StartFinish();
         BlinkTimer.deleteTimer(blinkTimerId);
         NeoLightColor(STARTER, color[GREEN]);
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
