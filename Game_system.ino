@@ -17,7 +17,7 @@ void StarterActivate(){
     // int gaugeNeoCnt = map(encoderValue,0,(starterNeoDivider),0,NumPixels[GAUGE]);
     // int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
     // Serial.println(String(encoderValue) + "___"+ String(gaugeNeoCnt) + "___" + String(motorSpeed));
-    int gaugeNeoCnt = encoderValue / 4000;
+    int gaugeNeoCnt = encoderValue / starterEncoderUnit;
     EncoderNeopixelOn(gaugeNeoCnt);
 
     if (!tagOnReader){

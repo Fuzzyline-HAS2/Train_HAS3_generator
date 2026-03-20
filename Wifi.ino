@@ -1,7 +1,10 @@
 void DataChanged()
 {
   static StaticJsonDocument<1000> cur;  //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
-  if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){  
+  // 서버에서 받은 스타터 설정값 동기화
+  if((int)my["starter_encoder_unit"] > 0)  starterEncoderUnit  = (int)my["starter_encoder_unit"];
+  if((int)my["starter_decrease_amount"] > 0) starterDecreaseAmount = (int)my["starter_decrease_amount"];
+  if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
     if((String)(const char*)my["game_state"] == "setting"){
       SettingFunc();
     }

@@ -17,7 +17,7 @@ void GameTimerFunc(){
     gameTimerCnt++;
     // Serial.println("gameTimerCnt:" + (String)gameTimerCnt);
     if(gameTimerCnt == 5){ // 0.5s x 6 =3sec
-        encoderValue = encoderValue - (starterNeoDivider*0.01); //초마다 전체량에서 1프로씩 감소
+        encoderValue = encoderValue - starterDecreaseAmount;
         gameTimerCnt = 3;
         if(encoderValue < 0){
             encoderValue = 0;

@@ -19,6 +19,8 @@ void (*ptrRfidMode)();      //rfid모드 저장용 포인터 함수
 void WaitFunc();
 void StarterActivate();
 const unsigned long starterNeoDivider = 15000*7.5;
+int starterEncoderUnit = 4000;        // 게이지 1칸당 필요한 엔코더 값
+int starterDecreaseAmount = 1125;     // 2초마다 감소하는 엔코더 양
 bool blinkOn = false;
 //****************************************Timer System****************************************************************
 SimpleTimer GameTimer;
