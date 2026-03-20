@@ -43,7 +43,6 @@ void RfidLoopMain()
 void CheckingPlayers(uint8_t rfidData[32]) //어떤 카드가 들어왔는지 확인용
 { 
   String tagUser = "";
-  logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   for(int i = 0; i < 4; i++)    //GxPx 데이터만 배열에서 추출해서 string으로 저장
     tagUser += (char)rfidData[i];
   Serial.println("tag_user_data : " + tagUser);     // 1. 태그한 플레이어의 역할과 생명칩갯수, 최대생명칩갯수 등 읽어오기
@@ -75,9 +74,6 @@ void LoginGenerator()
   LeftGenerator();
   delay(3500);
   BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
-  LogoutTimer.deleteTimer(logoutTimerId);
-  logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
-  logoutTimerId = LogoutTimer.setInterval(logoutTime,LogoutTimerFunc);    //로그아웃 타이머 시작
   if((String)(const char*)my["device_state"] == "starter_finish"){
     AllNeoOn(GREEN);
     LeftGenerator(); 
@@ -113,8 +109,6 @@ void LoginGenerator()
 void BatteryPackCharge()
 { 
   Serial.println("BatteryPackCharge PTRFUNC");
-  // LogoutTimer.restartTimer(logoutTimerId);
-  logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   if((int)tag["battery_pack"] != 0 && (int)my["battery_pack"] < (int)my["max_battery_pack"]){    //발전기에 필요한 배터리팩 개수 > 플레이어가 소지한 배터리팩 개수
     SendCmd("wBatteryCharge.en=1");
     Serial.println("BatteyPack Charge");
@@ -153,7 +147,6 @@ void BatteryFinish()
   delay(10);
   SendCmd("wStaterOn.en=1");
   LeftGenerator();
-  logoutTimerCnt = 0; //로그아웃 타이머 카운트 리셋
   AllNeoOn(GREEN);
   Serial.println("Battery Finish Func!");
   encoderValue = 1;
@@ -172,7 +165,6 @@ void BatteryFinish()
 void StartFinish()
 {
   Serial.println("StartFinish PTRFUNC");
-  LogoutTimer.deleteTimer(logoutTimerId);
   GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료3
   BlinkTimer.deleteTimer(blinkTimerId);
   Serial.println("Generator Fixed!");

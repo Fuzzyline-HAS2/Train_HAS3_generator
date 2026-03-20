@@ -1,11 +1,11 @@
 void TimerInit(){
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);
     gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);
-    logoutTimerId = LogoutTimer.setInterval(logoutTime,LogoutTimerFunc);
+
     blinkTimerId = BlinkTimer.setInterval(blinkTime,BlinkTimerFunc);
 
     GameTimer.deleteTimer(gameTimerId);
-    LogoutTimer.deleteTimer(logoutTimerId);
+
     BlinkTimer.deleteTimer(blinkTimerId);
 }
 
@@ -23,19 +23,6 @@ void GameTimerFunc(){
             encoderValue = 0;
             gameTimerCnt = 0;
         }
-    }
-}
-void LogoutTimerFunc(){
-    logoutTimerCnt++;
-    // Serial.println("LogoutTimerCnt:" + (String)logoutTimerCnt);
-    if(logoutTimerCnt >= 12){
-        Serial.println("LogOutTimer TimeOUT");
-        LogoutTimer.deleteTimer(logoutTimerId);        //로그아웃 타이머 종료
-        GameTimer.deleteTimer(gameTimerId);
-        BlinkTimer.deleteTimer(blinkTimerId);
-        EngineStop();
-        ActivateFunc();
-        logoutTimerCnt = 0;
     }
 }
 
@@ -59,6 +46,6 @@ void BlinkTimerStart(int Neo, int NeoColor){
 void TimerRun(){
     WifiTimer.run();
     GameTimer.run();
-    LogoutTimer.run();
+
     BlinkTimer.run();
 }

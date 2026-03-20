@@ -26,13 +26,13 @@ void DataChanged()
         SendCmd("page pgEscapeOpen");
         LeftGenerator();
         GameTimer.deleteTimer(gameTimerId);
-        LogoutTimer.deleteTimer(logoutTimerId);
+
         BlinkTimer.deleteTimer(blinkTimerId);
         AllNeoOn(BLUE);
       }
       else if((String)(const char*)my["device_state"] == "repaired"){
         Serial.println("StartFinish PTRFUNC");
-        LogoutTimer.deleteTimer(logoutTimerId);
+
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
         Serial.println("Generator Fixed!");
@@ -46,7 +46,7 @@ void DataChanged()
         int maxBattery = (int)my["max_battery_pack"] - (int)my["battery_pack"];
         Serial.println((String)maxBattery);
         has2wifi.Send((String)(const char*)my["device_name"], "battery_pack", ((String)maxBattery));
-        LogoutTimer.deleteTimer(logoutTimerId);
+
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         ActivateFunc();
       }
@@ -85,7 +85,7 @@ void SettingFunc(void){
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
-    LogoutTimer.deleteTimer(logoutTimerId);
+
     BlinkTimer.deleteTimer(blinkTimerId);
     ptrRfidMode = WaitFunc;
     ptrCurrentMode = WaitFunc;
@@ -99,7 +99,7 @@ void ActivateFunc(void){
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
-    LogoutTimer.deleteTimer(logoutTimerId);
+
     BlinkTimer.deleteTimer(blinkTimerId);
     nfc[MAINPN532].SAMConfig();   // PN532 재활성화 (idle 후 응답 복구)
     ptrRfidMode = LoginGenerator;
@@ -113,7 +113,7 @@ void ReadyFunc(void){
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
-    LogoutTimer.deleteTimer(logoutTimerId);
+
     BlinkTimer.deleteTimer(blinkTimerId);
     ptrRfidMode = WaitFunc;
     ptrCurrentMode = WaitFunc;

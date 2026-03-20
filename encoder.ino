@@ -11,7 +11,6 @@ void EncoderInit()
 }
 void updateEncoder()
 {
-    logoutTimerCnt = 0;
     gameTimerCnt = 0;
 
     int MSB = digitalRead(encoderPinA); // MSB = most significant bit

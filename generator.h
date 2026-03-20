@@ -23,13 +23,13 @@ bool blinkOn = false;
 //****************************************Timer System****************************************************************
 SimpleTimer GameTimer;
 SimpleTimer WifiTimer;
-SimpleTimer LogoutTimer;
+
 SimpleTimer BlinkTimer;
 
 void TimerInit();
 void WifiIntervalFunc();
 void GameTimerFunc();
-void LogoutTimerFunc();
+
 
 void BlinkTimerFunc();
 void BlinkTimerStart(int Neo, int NeoColor);
@@ -38,15 +38,15 @@ int blinkColor = 0;
 
 int wifiTimerId;
 int gameTimerId;
-int logoutTimerId;
+
 int blinkTimerId;
 
 unsigned long wifiTime = 2000;    // 1sec
-unsigned long logoutTime = 5000;  // 5ses 로그
+
 unsigned long gameTime = 400;    // 3sec
 unsigned long blinkTime = 1800;   // 1sec
 
-volatile unsigned int logoutTimerCnt;
+
 volatile unsigned int gameTimerCnt;
 //****************************************Nextion SETUP****************************************************************
 HardwareSerial nexHwSerial(2);
