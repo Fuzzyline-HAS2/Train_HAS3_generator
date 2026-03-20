@@ -101,6 +101,7 @@ void ActivateFunc(void){
     GameTimer.deleteTimer(gameTimerId);
     LogoutTimer.deleteTimer(logoutTimerId);
     BlinkTimer.deleteTimer(blinkTimerId);
+    nfc[MAINPN532].SAMConfig();   // PN532 재활성화 (idle 후 응답 복구)
     ptrRfidMode = LoginGenerator;
     ptrCurrentMode = RfidLoopMain;
 }
