@@ -4,14 +4,13 @@ void MotorInit()
     pinMode(BOXSWITCH_PIN,INPUT_PULLUP);
     pinMode(MOTOR_INA1_PIN, OUTPUT);
     pinMode(MOTOR_INA2_PIN, OUTPUT);
-    ledcSetup(MotorLedChannel, MotorFreq, MotorResolution);
-    ledcAttachPin(MOTOR_PWMA_PIN, MotorLedChannel);
-    ledcWrite(MotorLedChannel, 0);
+    ledcAttach(MOTOR_PWMA_PIN, MotorFreq, MotorResolution);
+    ledcWrite(MOTOR_PWMA_PIN, 0);
 }
 void EngineSpeeed(int enginePwm)
 {
     // Serial.println("Engine On");
-    ledcWrite(MotorLedChannel, enginePwm);
+    ledcWrite(MOTOR_PWMA_PIN, enginePwm);
     digitalWrite(MOTOR_INA1_PIN, LOW);
     digitalWrite(MOTOR_INA2_PIN, HIGH);
 }

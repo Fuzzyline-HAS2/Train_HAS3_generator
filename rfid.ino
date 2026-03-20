@@ -6,7 +6,7 @@ void RfidInit()
   {
     Serial.println("PN532 FAIL : MAINPN532");
     AllNeoOn(RED);
-    goto RestartPn532;
+    //goto RestartPn532;
   }
   else
   {
@@ -86,7 +86,7 @@ void LoginGenerator()
     EngineSpeeed(250);
     ptrRfidMode = StartFinish;
     ptrCurrentMode = RfidLoopMain;
-    pixels[GAUGE].lightColor(color[BLUE]);
+    NeoLightColor(GAUGE, color[BLUE]);
     BlinkTimer.deleteTimer(blinkTimerId);
     BlinkTimerStart(CIRCUIT, YELLOW);                                  //스타터종료 인식 pn532 함수로 변경
   }
@@ -163,9 +163,10 @@ void BatteryFinish()
   BlinkTimer.deleteTimer(blinkTimerId);
   BlinkTimerStart(STARTER, YELLOW);
   LeftGenerator();
-  ptrCurrentMode = StarterActivate;
   attachInterrupt(encoderPinA, updateEncoder, CHANGE);
   attachInterrupt(encoderPinB, updateEncoder, CHANGE);
+  delay(100);
+  ptrCurrentMode = StarterActivate;
 }
 
 void StartFinish()

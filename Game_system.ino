@@ -3,7 +3,7 @@ void StarterActivate(){
     // int motorSpeed = map(encoderValue,0,(starterNeoDivider),0,255);
     // Serial.println(String(encoderValue) + "___"+ String(gaugeNeoCnt) + "___" + String(motorSpeed));
     int gaugeNeoCnt = encoderValue / 4000;
-    Serial.println(gaugeNeoCnt);
+    Serial.println("raw: " + String(encoderValue));
     EncoderNeopixelOn(gaugeNeoCnt);
     EngineSpeeed(gaugeNeoCnt*8);
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
@@ -14,7 +14,7 @@ void StarterActivate(){
         ptrRfidMode = StartFinish;
         ptrCurrentMode = RfidLoopMain;
         BlinkTimer.deleteTimer(blinkTimerId);
-        pixels[STARTER].lightColor(color[GREEN]);
+        NeoLightColor(STARTER, color[GREEN]);
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
         BlinkTimerStart(CIRCUIT, YELLOW);

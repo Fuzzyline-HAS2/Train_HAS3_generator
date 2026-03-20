@@ -20,7 +20,7 @@ void setup() {
     NextionInit();
     TimerInit();
 // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
- has2wifi.Setup("badland");
+ has2wifi.Setup("badland_ruins", "Code3824@");
 //    has2wifi.Setup("city");
     DataChanged();
 }

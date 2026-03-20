@@ -42,11 +42,11 @@ void LogoutTimerFunc(){
 void BlinkTimerFunc(){
     // Serial.println("Blink!");
     if(blinkOn == true){
-        pixels[blinkNeo].lightColor(color[blinkColor]);
+        NeoLightColor(blinkNeo, color[blinkColor]);
         blinkOn = false;
     }
     else{
-        pixels[blinkNeo].lightColor(color[BLACK]);
+        NeoLightColor(blinkNeo, color[BLACK]);
         blinkOn = true;
     }
 }

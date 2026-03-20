@@ -1,17 +1,13 @@
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");
-    pinMode(encoderPinA, INPUT);
-    pinMode(encoderPinB, INPUT);
-    // pinMode(buttonPin, INPUT_PULLUP);
-    
-    digitalWrite(encoderPinA, HIGH); // turn pullup resistor on
-    digitalWrite(encoderPinB, HIGH); // turn pullup resistor on
+    pinMode(encoderPinA, INPUT_PULLUP);
+    pinMode(encoderPinB, INPUT_PULLUP);
     
     // call updateEncoder() when any high/low changed seen
     // on interrupt 0 (pin 2), or interrupt 1 (pin 3)
-    // attachInterrupt(encoderPinA, updateEncoder, CHANGE);
-    // attachInterrupt(encoderPinB, updateEncoder, CHANGE);
+    attachInterrupt(encoderPinA, updateEncoder, CHANGE);
+    attachInterrupt(encoderPinB, updateEncoder, CHANGE);
 }
 void updateEncoder()
 {
