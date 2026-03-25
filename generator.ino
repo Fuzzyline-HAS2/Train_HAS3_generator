@@ -13,6 +13,7 @@
 
 void setup() {
     Serial.begin(115200);
+    initOTA();
     NeopixelInit();
     RfidInit();
     MotorInit();
