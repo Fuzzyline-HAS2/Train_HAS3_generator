@@ -167,10 +167,10 @@ void initOTA() {
 
   // 와이파이 연결 시작
   Serial.print("[OTA 모듈] 와이파이 연결 중: ");
-  Serial.println(ssid);
+  Serial.println(ota_ssid);
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  WiFi.begin(ota_ssid, ota_password);
 
   // 연결될 때까지 최대 10초간 대기합니다.
   int tries = 0;

@@ -24,6 +24,7 @@ void setup() {
  has2wifi.Setup("badland_ruins", "Code3824@");
 //    has2wifi.Setup("city");
     DataChanged();
+    Serial.println("OTA 업데이트 했어욤");
 }
 void loop() {
     ptrCurrentMode();

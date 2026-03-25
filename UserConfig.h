@@ -6,8 +6,8 @@
 // ==========================================
 
 // 1. 와이파이 설정
-const char *ssid = "badland_ruins";
-const char *password = "Code3824@";
+const char *ota_ssid = "badland_ruins";
+const char *ota_password = "Code3824@";
 
 // 2. 펌웨어 다운로드 주소
 const char *firmware_url = "https://raw.githubusercontent.com/Fuzzyline-HAS2/"
@@ -18,7 +18,7 @@ const char *version_url = "https://raw.githubusercontent.com/Fuzzyline-HAS2/"
                           "generator/hyoju/version.txt";
 
 // 3. 디버그 및 버전 정보
-#define CURRENT_FIRMWARE_VERSION 1
+#define CURRENT_FIRMWARE_VERSION 3
 
 // ==========================================
 #endif
