@@ -126,8 +126,7 @@ void BatteryPackCharge()
       SendCmd("page pgBatteryMax");
       delay(100);
       SendCmd("wBatteryFull.en=1");
-      BlinkTimer.deleteTimer(blinkTimerId);
-      BlinkTimerStart(CIRCUIT, YELLOW);
+      AllNeoOn(BLUE);
     }
   }
   else if((int)my["battery_pack"] == (int)my["max_battery_pack"]){  //'태그하여 충전완료'페이지 에서 태그하면 스타터로 넘기는 부분
@@ -153,8 +152,7 @@ void BatteryFinish()
   GameTimer.deleteTimer(gameTimerId);
   gameTimerCnt = 0;
   gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);
-  BlinkTimer.deleteTimer(blinkTimerId);
-  BlinkTimerStart(STARTER, YELLOW);
+  AllNeoOn(BLUE);
   LeftGenerator();
   attachInterrupt(encoderPinA, updateEncoder, CHANGE);
   attachInterrupt(encoderPinB, updateEncoder, CHANGE);

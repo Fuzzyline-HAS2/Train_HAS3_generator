@@ -35,7 +35,7 @@ void StarterActivate(){
     if(gaugeNeoCnt >= NumPixels[GAUGE]){
         detachInterrupt(encoderPinA);
         detachInterrupt(encoderPinB);
-        SendCmd("page pgFixed");
+        // SendCmd("page pgFixed");
         StartFinish();
         BlinkTimer.deleteTimer(blinkTimerId);
         NeoLightColor(STARTER, color[GREEN]);
