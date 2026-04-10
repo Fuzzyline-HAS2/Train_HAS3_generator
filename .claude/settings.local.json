@@ -9,7 +9,10 @@
       "Bash(python -c \"import sys; print\\(sys.version\\)\")",
       "Bash(where python:*)",
       "Bash(\"C:/Users/ok/AppData/Local/Python/bin/python.exe\" --version)",
-      "Bash(\"C:/Users/ok/AppData/Local/Python/bin/python.exe\" \"C:/Users/ok/generator/scripts/deploy.py\")"
+      "Bash(\"C:/Users/ok/AppData/Local/Python/bin/python.exe\" \"C:/Users/ok/generator/scripts/deploy.py\")",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\ok\\\\HAS2_Nextion_Code\\\\Generator\\\\Generator.HMI' -Pattern 'pg[A-Za-z]+' -AllMatches | ForEach-Object { \\\\$_.Matches } | ForEach-Object { \\\\$_.Value } | Sort-Object -Unique\")",
+      "Bash(git remote:*)",
+      "Bash(ls:*)"
     ]
   }
 }
