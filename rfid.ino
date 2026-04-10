@@ -94,14 +94,8 @@ void LoginGenerator()
     Serial.println("Battery_Charge Login");
     ptrRfidMode = BatteryPackCharge;                                    //배터리팩 인식 pn532 함수로 변경
     if((int)my["battery_pack"] == (int)my["max_battery_pack"]){
-      AllNeoOn(GREEN);
-      // has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
-      Serial.println("Battery Full!");              
-      SendCmd("page pgBatteryMax");
-      delay(100);
-      SendCmd("wBatteryFull.en=1");
-      BlinkTimer.deleteTimer(blinkTimerId);
-      BlinkTimerStart(CIRCUIT, YELLOW);
+      Serial.println("Battery Full on Login! → BatteryFinish");
+      BatteryFinish();
     }
   }
 }
@@ -119,17 +113,12 @@ void BatteryPackCharge()
     delay(10);
     BatteryPackSend();
     delay(2000);
-    if((int)my["battery_pack"] == (int)my["max_battery_pack"]){ //배터리 충전완료되면 '태그하여 충전완료'페이지로 이동
-      AllNeoOn(GREEN);
-      // has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
-      Serial.println("Battery Full!");              
-      SendCmd("page pgBatteryMax");
-      delay(100);
-      SendCmd("wBatteryFull.en=1");
-      AllNeoOn(BLUE);
+    if((int)my["battery_pack"] == (int)my["max_battery_pack"]){ //배터리 충전완료 → 바로 스타터로
+      Serial.println("Battery Full! → BatteryFinish");
+      BatteryFinish();
     }
   }
-  else if((int)my["battery_pack"] == (int)my["max_battery_pack"]){  //'태그하여 충전완료'페이지 에서 태그하면 스타터로 넘기는 부분
+  else if((int)my["battery_pack"] == (int)my["max_battery_pack"]){
     BatteryFinish();
   }
   else if((int)my["battery_pack"] > (int)my["max_battery_pack"]){
