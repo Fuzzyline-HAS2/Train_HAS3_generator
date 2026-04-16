@@ -21,7 +21,7 @@ void setup() {
     NextionInit();
     TimerInit();
 // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
- has2wifi.Setup("city");
+ has2wifi.Setup("badland");
 //    has2wifi.Setup("city");
     ota.setLogStream(Serial);
     ota.setOnSuccess([]() {
@@ -30,6 +30,8 @@ void setup() {
     ota.setOnSkip([]() {
         Serial.println("[OTA] 이미 최신 버전입니다.");
     });
+    ptrCurrentMode = WaitFunc;
+    ptrRfidMode = WaitFunc;
     DataChanged();
 }
 void loop() {
