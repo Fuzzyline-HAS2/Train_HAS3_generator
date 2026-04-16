@@ -9,11 +9,11 @@
  *
  */
 
+#define FIRMWARE_VER 10
 #include "generator.h"
 
 void setup() {
     Serial.begin(115200);
-    initOTA();
     NeopixelInit();
     RfidInit();
     MotorInit();
@@ -21,10 +21,16 @@ void setup() {
     NextionInit();
     TimerInit();
 // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
- has2wifi.Setup("badland_ruins", "Code3824@");
+ has2wifi.Setup("city");
 //    has2wifi.Setup("city");
+    ota.setLogStream(Serial);
+    ota.setOnSuccess([]() {
+        Serial.println("[OTA] ✅ 업데이트 성공! 재부팅합니다...");
+    });
+    ota.setOnSkip([]() {
+        Serial.println("[OTA] 이미 최신 버전입니다.");
+    });
     DataChanged();
-    Serial.println("OTA 업데이트 했어욤");
 }
 void loop() {
     ptrCurrentMode();

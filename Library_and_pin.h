@@ -9,6 +9,8 @@
 #include <Nextion.h>
 #include <HAS2_Wifi.h>
 #include <SimpleTimer.h>
+#include <SecureOTA.h>
+#include "secrets.h"
 
 #define NEXTIONHWSERIAL_RX_PIN 39
 #define NEXTIONHWSERIAL_TX_PIN 33

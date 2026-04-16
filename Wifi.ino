@@ -62,12 +62,16 @@ void DataChanged()
         AllNeoOn(BLUE);
         SendCmd("page pgPlayerWin");
       }
-      else if((String)(const char*)my["device_state"] == "player_lose"){ 
+      else if((String)(const char*)my["device_state"] == "player_lose"){
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(RED);
         SendCmd("page pgPlayerLose");
-      } 
+      }
+      else if((String)(const char*)my["device_state"] == "github"){
+        Serial.println("[OTA] OTA 업데이트 요청 수신");
+        ota.check();
+      }
     }
   }
   else{

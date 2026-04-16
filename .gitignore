@@ -1,1 +1,3 @@
 UserConfig.h
+secrets.h
+scripts/secrets.py
