@@ -100,16 +100,3 @@ void BatteryPackSend(){
         sendCommand("pBattery.pic=27");
     }
 }
-void PageSend(){
-    if((String)(const char*)my["device_state"] == "activate"){
-        sendCommand("pgLogin.device_state.val=0");
-        if((int)my["battery_pack"] == (int)my["max_battery_pack"])
-            sendCommand("pgLogin.device_state.val=3");
-
-        
-    }
-    else if((String)(const char*)my["device_state"] == "battery_max")
-        sendCommand("pgLogin.device_state.val=1");
-    else if((String)(const char*)my["device_state"] == "starter_finish")
-        sendCommand("pgLogin.device_state.val=2");
-}

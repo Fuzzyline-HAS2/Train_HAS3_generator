@@ -66,10 +66,9 @@ void DisplayCheck();
 void NextionReceived();
 void LeftGenerator();
 void BatteryPackSend();
-void PageSend();
-enum { PG_LOGIN = 0, PG_STARTER, PG_FIXED, PG_LOCKED, PG_BEFORE_TAGGER, PG_PRE_TAGGER, PG_PLAYER_WIN, PG_PLAYER_LOSE, PG_ESCAPE_OPEN };
+enum { PG_UNLOCKED = 0, PG_STARTER, PG_FIXED, PG_LOCKED, PG_BEFORE_TAGGER, PG_PRE_TAGGER, PG_PLAYER_WIN, PG_PLAYER_LOSE, PG_ESCAPE_OPEN };
 const String NEXTION_PAGES[] = {
-    "page pgLogin",
+    "page pgUnlocked",
     "page pgStarter",
     "page pgFixed",
     "page pgLocked",

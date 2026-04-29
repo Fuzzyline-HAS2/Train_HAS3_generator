@@ -104,16 +104,34 @@ void SettingFunc(void){
 void ActivateFunc(void){
     Serial.println("ACTIVATE");
     AllNeoOn(YELLOW);
-    SendCmd(NEXTION_PAGES[PG_LOCKED]);
+    SendCmd(NEXTION_PAGES[PG_UNLOCKED]);
+    BatteryPackSend();
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
-
     BlinkTimer.deleteTimer(blinkTimerId);
-    nfc[MAINPN532].SAMConfig();   // PN532 재활성화 (idle 후 응답 복구)
-    ptrRfidMode = LoginGenerator;
-    ptrCurrentMode = RfidLoopMain;
+    nfc[MAINPN532].SAMConfig();
+    if((String)(const char*)my["device_state"] == "starter_finish"){
+        AllNeoOn(GREEN);
+        LeftGenerator();
+        EngineSpeeed(250);
+        ptrRfidMode = StartFinish;
+        ptrCurrentMode = RfidLoopMain;
+        NeoLightColor(GAUGE, color[BLUE]);
+        BlinkTimer.deleteTimer(blinkTimerId);
+        BlinkTimerStart(CIRCUIT, YELLOW);
+    }
+    else if((String)(const char*)my["device_state"] == "battery_max"){
+        BatteryFinish();
+    }
+    else{
+        ptrRfidMode = BatteryPackCharge;
+        ptrCurrentMode = RfidLoopMain;
+        if((int)my["battery_pack"] == (int)my["max_battery_pack"]){
+            BatteryFinish();
+        }
+    }
 }
 void ReadyFunc(void){
     Serial.println("READY");

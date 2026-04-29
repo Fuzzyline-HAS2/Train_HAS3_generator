@@ -65,40 +65,6 @@ void CheckingPlayers(uint8_t rfidData[32]) //어떤 카드가 들어왔는지 �
   }
 }
 
-void LoginGenerator()
-{ 
-  Serial.println("LoginGenerator PTRFUNC");
-  BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
-  PageSend();                                       //로그인 페이지 다음에 나올 페이지 지정
-  SendCmd(NEXTION_PAGES[PG_LOGIN]);
-  LeftGenerator();
-  delay(3500);
-  BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
-  if((String)(const char*)my["device_state"] == "starter_finish"){
-    AllNeoOn(GREEN);
-    LeftGenerator(); 
-    detachInterrupt(encoderPinA);
-    detachInterrupt(encoderPinB);
-    EngineSpeeed(250);
-    ptrRfidMode = StartFinish;
-    ptrCurrentMode = RfidLoopMain;
-    NeoLightColor(GAUGE, color[BLUE]);
-    BlinkTimer.deleteTimer(blinkTimerId);
-    BlinkTimerStart(CIRCUIT, YELLOW);                                  //스타터종료 인식 pn532 함수로 변경
-  }
-  else if((String)(const char*)my["device_state"] == "battery_max"){
-    Serial.println("Battery_Max Login");
-    BatteryFinish();                                        //배터리팩 충전와료 pn532 함수로 변경
-  }
-  else{
-    Serial.println("Battery_Charge Login");
-    ptrRfidMode = BatteryPackCharge;                                    //배터리팩 인식 pn532 함수로 변경
-    if((int)my["battery_pack"] == (int)my["max_battery_pack"]){
-      Serial.println("Battery Full on Login! → BatteryFinish");
-      BatteryFinish();
-    }
-  }
-}
 
 void BatteryPackCharge()
 { 
