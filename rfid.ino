@@ -70,7 +70,7 @@ void LoginGenerator()
   Serial.println("LoginGenerator PTRFUNC");
   BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
   PageSend();                                       //로그인 페이지 다음에 나올 페이지 지정
-  SendCmd("page pgLogin");
+  SendCmd(NEXTION_PAGES[PG_LOGIN]);
   LeftGenerator();
   delay(3500);
   BatteryPackSend();                                //현재 배터리팩 개수 NExTION으로 전송
@@ -131,7 +131,7 @@ void BatteryPackCharge()
 void BatteryFinish()
 {
   has2wifi.Send((String)(const char*)my["device_name"], "device_state", "battery_max"); //메인으로 전송
-  SendCmd("page pgStarter");
+  SendCmd(NEXTION_PAGES[PG_STARTER]);
   delay(10);
   SendCmd("wStaterOn.en=1");
   LeftGenerator();
@@ -155,7 +155,7 @@ void StartFinish()
   GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료3
   BlinkTimer.deleteTimer(blinkTimerId);
   Serial.println("Generator Fixed!");
-  SendCmd("page pgFixed");
+  SendCmd(NEXTION_PAGES[PG_FIXED]);
   has2wifi.Send((String)(const char*)my["device_name"], "device_state", "repaired");
   receiveMineOn = true;
   has2wifi.ReceiveMine();

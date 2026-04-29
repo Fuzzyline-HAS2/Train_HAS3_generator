@@ -29,7 +29,7 @@ void DataChanged()
         ptrCurrentMode = WaitFunc;
         LeftGenerator();
         EngineStop(); 
-        SendCmd("page pgEscapeOpen");
+        SendCmd(NEXTION_PAGES[PG_ESCAPE_OPEN]);
         LeftGenerator();
         GameTimer.deleteTimer(gameTimerId);
 
@@ -42,7 +42,7 @@ void DataChanged()
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
         Serial.println("Generator Fixed!");
-        SendCmd("page pgFixed");
+        SendCmd(NEXTION_PAGES[PG_FIXED]);
         LeftGenerator();
         AllNeoOn(BLUE);
         ledcWrite(MOTOR_PWMA_PIN, 250);
@@ -63,13 +63,13 @@ void DataChanged()
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(BLUE);
-        SendCmd("page pgPlayerWin");
+        SendCmd(NEXTION_PAGES[PG_PLAYER_WIN]);
       }
       else if((String)(const char*)my["device_state"] == "player_lose"){
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
         AllNeoOn(RED);
-        SendCmd("page pgPlayerLose");
+        SendCmd(NEXTION_PAGES[PG_PLAYER_LOSE]);
       }
       else if((String)(const char*)my["device_state"] == "github"){
         Serial.println("[OTA] OTA 업데이트 요청 수신");
@@ -87,7 +87,7 @@ void WaitFunc(){
 }
 void SettingFunc(void){
     Serial.println("SETTING");
-    SendCmd("page pgBeforeTagger");
+    SendCmd(NEXTION_PAGES[PG_BEFORE_TAGGER]);
     LeftGenerator();
     AllNeoOn(WHITE);
     EngineStop();
@@ -104,7 +104,7 @@ void SettingFunc(void){
 void ActivateFunc(void){
     Serial.println("ACTIVATE");
     AllNeoOn(YELLOW);
-    SendCmd("page pgLocked");
+    SendCmd(NEXTION_PAGES[PG_LOCKED]);
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
@@ -118,7 +118,7 @@ void ActivateFunc(void){
 void ReadyFunc(void){
     Serial.println("READY");
     AllNeoOn(RED);
-    SendCmd("page pgPreTagger");
+    SendCmd(NEXTION_PAGES[PG_PRE_TAGGER]);
     LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
