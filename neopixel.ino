@@ -8,10 +8,25 @@ void NeopixelInit()
   for (int i = 0; i < NeopixelNum; ++i)
   {
     pixels[i].begin();
+    pixels[i].setBrightness(ledBrightness);
   }
   for (int i = 0; i < NeopixelNum; ++i)
   {
     NeoLightColor(i, color[WHITE]);
+  }
+}
+
+void UpdateBrightness()
+{
+  int serverBrightness = my["brightness"].as<int>();
+  if (serverBrightness <= 0 || serverBrightness > 100) {
+    ledBrightness = DEFAULT_BRIGHTNESS;
+  } else {
+    ledBrightness = map(serverBrightness, 1, 100, 1, 255);
+  }
+  for (int i = 0; i < NeopixelNum; ++i) {
+    pixels[i].setBrightness(ledBrightness);
+    pixels[i].show();
   }
 }
 
