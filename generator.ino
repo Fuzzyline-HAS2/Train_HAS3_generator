@@ -9,7 +9,7 @@
  *
  */
 
-#define FIRMWARE_VER 10
+#define FIRMWARE_VER 12
 #include "generator.h"
 
 void setup() {
