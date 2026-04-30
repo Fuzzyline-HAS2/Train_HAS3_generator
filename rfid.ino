@@ -104,7 +104,6 @@ void BatteryFinish()
   delay(10);
   SendCmd("wStaterOn.en=1");
   delay(10);
-  LeftGenerator();
   AllNeoOn(GREEN);
   Serial.println("Battery Finish Func!");
   encoderValue = 1;
@@ -112,7 +111,6 @@ void BatteryFinish()
   gameTimerCnt = 0;
   gameTimerId = GameTimer.setInterval(gameTime,GameTimerFunc);
   AllNeoOn(BLUE);
-  LeftGenerator();
   attachInterrupt(encoderPinA, updateEncoder, CHANGE);
   attachInterrupt(encoderPinB, updateEncoder, CHANGE);
   delay(100);

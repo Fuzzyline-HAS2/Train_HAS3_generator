@@ -16,21 +16,17 @@ void DataChanged()
     }
     else if((String)(const char*)my["game_state"] == "activate"){
       ActivateFunc();
-      LeftGenerator();
     }
   } 
-  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){  
-    LeftGenerator();
+  if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
   }
   if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
       if((String)(const char*)my["device_state"] == "repaired_all"){ 
         ptrRfidMode = WaitFunc;
         ptrCurrentMode = WaitFunc;
-        LeftGenerator();
-        EngineStop(); 
+        EngineStop();
         SendCmd(NEXTION_PAGES[PG_ESCAPE_OPEN]);
-        LeftGenerator();
         GameTimer.deleteTimer(gameTimerId);
 
         BlinkTimer.deleteTimer(blinkTimerId);
@@ -88,7 +84,6 @@ void WaitFunc(){
 void SettingFunc(void){
     Serial.println("SETTING");
     SendCmd(NEXTION_PAGES[PG_BEFORE_TAGGER]);
-    LeftGenerator();
     AllNeoOn(WHITE);
     EngineStop();
     encoderValue = 100;
@@ -106,7 +101,6 @@ void ActivateFunc(void){
     AllNeoOn(YELLOW);
     SendCmd(NEXTION_PAGES[PG_UNLOCKED]);
     BatteryPackSend();
-    LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
@@ -114,7 +108,6 @@ void ActivateFunc(void){
     nfc[MAINPN532].SAMConfig();
     if((String)(const char*)my["device_state"] == "starter_finish"){
         AllNeoOn(GREEN);
-        LeftGenerator();
         EngineSpeeed(250);
         ptrRfidMode = StartFinish;
         ptrCurrentMode = RfidLoopMain;
@@ -137,7 +130,6 @@ void ReadyFunc(void){
     Serial.println("READY");
     AllNeoOn(RED);
     SendCmd(NEXTION_PAGES[PG_PRE_TAGGER]);
-    LeftGenerator();
     detachInterrupt(encoderPinA);
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
