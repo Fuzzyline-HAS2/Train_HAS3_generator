@@ -79,7 +79,7 @@ const String NEXTION_PAGES[] = {
     "page pgEscapeOpen"
 };
 //****************************************Neopixel SETUP****************************************************************
-#define DEFAULT_BRIGHTNESS 255
+#define DEFAULT_BRIGHTNESS 50
 int ledBrightness = DEFAULT_BRIGHTNESS;
 void NeopixelInit();
 void UpdateBrightness();
