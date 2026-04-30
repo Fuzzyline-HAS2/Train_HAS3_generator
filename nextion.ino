@@ -39,64 +39,53 @@ void LeftGenerator(){
 
     if((int)my["left_generator"] == 5)
     {
-        sendCommand("pgLocked.vLeftGen.val=5");
-        sendCommand("pleftDevice.pic=42");
+        sendCommand("pleftDevice.pic=170");
         Serial.println("left Generator 5");
     }
     else if((int)my["left_generator"] == 4)
     {
-        sendCommand("pgLocked.vLeftGen.val=4");
-        sendCommand("pleftDevice.pic=41");
+        sendCommand("pleftDevice.pic=171");
         Serial.println("left Generator 4");
     }
     else if((int)my["left_generator"] == 3)
     {
-        sendCommand("pgLocked.vLeftGen.val=3");
-        sendCommand("pleftDevice.pic=40");
+        sendCommand("pleftDevice.pic=172");
         Serial.println("left Generator 3");
     }
     else if((int)my["left_generator"] == 2)
     {
-        sendCommand("pgLocked.vLeftGen.val=2");
-        sendCommand("pleftDevice.pic=39");
+        sendCommand("pleftDevice.pic=173");
         Serial.println("left Generator 2");
     }
     else if((int)my["left_generator"] == 1)
     {
-        sendCommand("pgLocked.vLeftGen.val=1");
-        sendCommand("pleftDevice.pic=38");
+        sendCommand("pleftDevice.pic=174");
         Serial.println("left Generator 1");
     }
 }
 void BatteryPackSend(){
     if((String)(const char*)my["battery_pack"] == "0")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=0");
-        sendCommand("pBattery.pic=22");
+        sendCommand("tBattery0.en=0");
     }
     else if((String)(const char*)my["battery_pack"] == "1")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=1");
-        sendCommand("pBattery.pic=23");
+        sendCommand("tBattery0.en=1");
     }
     else if((String)(const char*)my["battery_pack"] == "2")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=2");
-        sendCommand("pBattery.pic=24");
+        sendCommand("tBattery1.en=1");
     }
     else if((String)(const char*)my["battery_pack"] == "3")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=3");
-        sendCommand("pBattery.pic=25");
+        sendCommand("tBattery2.en=1");
     }
     else if((String)(const char*)my["battery_pack"] == "4")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=4");
-        sendCommand("pBattery.pic=26");
+        sendCommand("tBattery3.en=1");
     }
     else if((String)(const char*)my["battery_pack"] == "5")
     {
-        sendCommand("pgUnlocked.vBatteryPack.val=5");
-        sendCommand("pBattery.pic=27");
+        sendCommand("vBatteryPack.val=5");
     }
 }

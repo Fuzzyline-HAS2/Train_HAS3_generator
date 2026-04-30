@@ -70,7 +70,10 @@ void BatteryPackCharge()
 { 
   Serial.println("BatteryPackCharge PTRFUNC");
   if((int)tag["battery_pack"] != 0 && (int)my["battery_pack"] < (int)my["max_battery_pack"]){    //발전기에 필요한 배터리팩 개수 > 플레이어가 소지한 배터리팩 개수
-    SendCmd("wBatteryCharge.en=1");
+    if((int)my["battery_pack"] + 1 == (int)my["max_battery_pack"])
+      SendCmd("wBatteryFull.en=1");
+    else
+      SendCmd("wBatteryCharge.en=1");
     Serial.println("BatteyPack Charge");
     has2wifi.Send((String)(const char*)tag["device_name"], "battery_pack", ("-1"));
     has2wifi.Send((String)(const char*)my["device_name"], "battery_pack", ("+1"));
@@ -100,6 +103,7 @@ void BatteryFinish()
   SendCmd(NEXTION_PAGES[PG_STARTER]);
   delay(10);
   SendCmd("wStaterOn.en=1");
+  delay(10);
   LeftGenerator();
   AllNeoOn(GREEN);
   Serial.println("Battery Finish Func!");
