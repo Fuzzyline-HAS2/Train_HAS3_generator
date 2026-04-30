@@ -5,122 +5,130 @@ import shutil
 import subprocess
 import glob
 
-# Windows CMD에서 이모지 출력을 위한 설정
+# Windows CMD 이모지 출력을 위한 설정
 sys.stdout.reconfigure(encoding='utf-8')
 
-# ================= 설정 =================
-SKETCH_FILE = "generator.ino"   # ← 기기마다 이 줄만 수정
+SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR      = os.path.dirname(SCRIPT_DIR)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
-SKETCH_PATH = os.path.join(BASE_DIR, SKETCH_FILE)
-BUILD_DIR = os.path.join(BASE_DIR, "build")
-ARDUINO_OUTPUT = os.path.join(BASE_DIR, "ArduinoOutput")
-OUTPUT_FILENAME = "update.bin"
-# =======================================
+# ── 기기 저장소에 맞게 변경 ─────────────────────────────────
+SKETCH_FILE   = os.path.join(BASE_DIR, "generator.ino")  # ← 변경 필요
+VERSION_MACRO = "FIRMWARE_VER"
+# ────────────────────────────────────────────────────────────
 
-def get_firmware_ver():
-    with open(SKETCH_PATH, "r", encoding="utf-8") as f:
+OUTPUT_BIN    = os.path.join(BASE_DIR, "update.bin")
+OUTPUT_SIG    = os.path.join(BASE_DIR, "update.sig")
+VERSION_TXT   = os.path.join(BASE_DIR, "version.txt")
+
+try:
+    sys.path.insert(0, SCRIPT_DIR)
+    from secrets import HMAC_SECRET
+except ImportError:
+    print("❌ 오류: scripts/secrets.py 파일이 없습니다.")
+    print("   secrets.py.example 을 secrets.py 로 복사한 뒤 비밀키를 설정하세요.")
+    sys.exit(1)
+
+def get_current_version():
+    with open(SKETCH_FILE, "r", encoding="utf-8") as f:
         content = f.read()
-    match = re.search(r'#define\s+FIRMWARE_VER\s+(\d+)', content)
+    pattern = rf'#define\s+{VERSION_MACRO}\s+(\d+)'
+    match = re.search(pattern, content)
     if match:
         return int(match.group(1))
     return None
 
+def increment_version(current_ver):
+    new_ver = current_ver + 1
+    with open(SKETCH_FILE, "r", encoding="utf-8") as f:
+        content = f.read()
+    new_content = re.sub(
+        rf'#define\s+{VERSION_MACRO}\s+\d+',
+        f'#define {VERSION_MACRO} {new_ver}',
+        content
+    )
+    with open(SKETCH_FILE, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    return new_ver
+
 def find_newest_bin():
+    sketch_dir = os.path.dirname(SKETCH_FILE)
     search_patterns = [
-        os.path.join(BUILD_DIR, "**", "*.bin"),
-        os.path.join(ARDUINO_OUTPUT, "**", "*.bin"),
-        os.path.join(BASE_DIR, "*.bin"),
-        os.path.join(BASE_DIR, "**", "*.bin"),
+        os.path.join(sketch_dir, "build", "**", "*.bin"),
+        os.path.join(sketch_dir, "**", "*.bin"),
+        os.path.join(BASE_DIR, "build", "**", "*.bin"),
     ]
     candidates = []
     for pattern in search_patterns:
         candidates.extend(glob.glob(pattern, recursive=True))
-
-    # 배포용 파일 및 불필요한 파일 제외
-    candidates = [f for f in candidates if not f.endswith(OUTPUT_FILENAME)]
-    candidates = [f for f in candidates if "merged" not in f]
-    candidates = [f for f in candidates if "bootloader" not in f]
-    candidates = [f for f in candidates if "partitions" not in f]
-    candidates = [f for f in candidates if "boot_app" not in f]
-
+    exclude_keywords = ["update", "merged", "bootloader", "partitions", "boot_app"]
+    candidates = [
+        f for f in candidates
+        if not any(kw in os.path.basename(f).lower() for kw in exclude_keywords)
+    ]
     if not candidates:
         return None
     return max(candidates, key=os.path.getmtime)
 
-def sign_firmware(bin_path):
-    sign_script = os.path.join(SCRIPTS_DIR, "sign_firmware.py")
-    result = subprocess.run(
-        [sys.executable, sign_script, bin_path],
-        capture_output=True, text=True, encoding='utf-8', cwd=SCRIPTS_DIR
-    )
-    if result.returncode != 0:
-        print(f"❌ 서명 실패:\n{result.stderr}")
-        sys.exit(1)
-    print(result.stdout.strip())
-
 def git_push(version):
-    print("\n☁️  GitHub에 업로드 중...")
+    print("\n☁️ GitHub 에 업로드 중...")
     try:
-        version_file = os.path.join(BASE_DIR, "version.txt")
-        with open(version_file, "w", encoding="utf-8") as f:
+        with open(VERSION_TXT, "w", encoding="utf-8") as f:
             f.write(str(version))
-        print(f"📝 version.txt = {version}")
-
-        # 특정 파일만 git add (secrets 등 민감 파일 제외)
-        files_to_add = ["update.bin", "update.sig", "version.txt"]
-        subprocess.run(["git", "add"] + files_to_add, cwd=BASE_DIR, check=True)
-        subprocess.run(["git", "commit", "-m", f"Firmware Update v{version}"], cwd=BASE_DIR, check=True)
-        subprocess.run(["git", "push"], cwd=BASE_DIR, check=True)
-        print("✅ 업로드 완료!")
+        print(f"📝 version.txt → v{version}")
+        files_to_add = [
+            "update.bin",
+            "update.sig",
+            "version.txt",
+            os.path.relpath(SKETCH_FILE, BASE_DIR).replace("\\", "/"),
+        ]
+        subprocess.run(["git", "-C", BASE_DIR, "add"] + files_to_add, check=True)
+        subprocess.run(
+            ["git", "-C", BASE_DIR, "commit", "-m", f"Firmware Update v{version}"],
+            check=True
+        )
+        subprocess.run(["git", "-C", BASE_DIR, "push"], check=True)
+        print("✅ GitHub 업로드 완료!")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Git 오류 발생: {e}")
-        print("Git이 설치되어 있고 저장소가 연결되어 있는지 확인해주세요.")
+        print(f"❌ Git 오류: {e}")
 
 def main():
-    print("🚀 SecureOTA 배포를 시작합니다...")
-
-    # 1. FIRMWARE_VER 읽기
-    ver = get_firmware_ver()
-    if ver is None:
-        print(f"❌ 오류: {SKETCH_FILE}에서 FIRMWARE_VER를 찾을 수 없습니다.")
-        print("   generator.ino 상단에 #define FIRMWARE_VER <숫자> 가 있는지 확인하세요.")
+    print("🚀 SecureOTA 배포 자동화 시작...")
+    if HMAC_SECRET == "CHANGE_THIS_TO_YOUR_SECRET":
+        print("❌ 오류: scripts/secrets.py 의 HMAC_SECRET 을 설정하세요.")
         return
-    print(f"📌 FIRMWARE_VER: {ver}")
-
-    # 2. 컴파일 대기
-    print("\n⏳ [행동 필요] Arduino IDE에서 'Sketch > Export Compiled Binary'를 실행해주세요.")
-    print("   컴파일이 완료되면 엔터(Enter) 키를 눌러주세요...")
+    cur_ver = get_current_version()
+    if cur_ver is None:
+        print(f"❌ 오류: {SKETCH_FILE} 에서 '#define {VERSION_MACRO}' 를 찾을 수 없습니다.")
+        return
+    print(f"\n현재 버전: v{cur_ver}")
+    new_ver = increment_version(cur_ver)
+    print(f"🔼 버전 변경: v{cur_ver} → v{new_ver}")
+    print("\n⏳ [행동 필요] 아두이노 IDE 에서 Ctrl+Alt+S 를 실행하세요.")
+    print("   완료되면 Enter 를 누르세요...")
     input()
-
-    # 3. .bin 파일 찾기
-    print("🔎 빌드된 .bin 파일을 찾는 중...")
+    print("🔎 빌드 파일 탐색 중...")
     bin_file = find_newest_bin()
     if not bin_file:
         print("❌ .bin 파일을 찾을 수 없습니다.")
-        print("   Arduino IDE에서 'Sketch > Export Compiled Binary'를 실행했는지 확인하세요.")
         return
-    print(f"   찾음: {bin_file}")
-
-    # 4. update.bin으로 복사
-    output_path = os.path.join(BASE_DIR, OUTPUT_FILENAME)
+    print(f"   발견: {os.path.relpath(bin_file, BASE_DIR)}")
     try:
-        shutil.copy2(bin_file, output_path)
-        print(f"📦 update.bin 생성 완료")
+        shutil.copy2(bin_file, OUTPUT_BIN)
+        print(f"📦 → update.bin 복사 완료")
     except Exception as e:
         print(f"❌ 파일 복사 실패: {e}")
         return
-
-    # 5. HMAC-SHA256 서명
-    print("🔏 HMAC-SHA256 서명 중...")
-    sign_firmware(output_path)
-
-    # 6. Git push (update.bin, update.sig, version.txt만)
-    git_push(ver)
-
-    print(f"\n🎉 배포 완료! v{ver} 이(가) GitHub에 업로드되었습니다.")
-    print("   서버에서 device_state = github 를 전송하면 기기가 업데이트됩니다.")
+    sign_script = os.path.join(SCRIPT_DIR, "sign_firmware.py")
+    result = subprocess.run(
+        [sys.executable, sign_script, OUTPUT_BIN, HMAC_SECRET, OUTPUT_SIG],
+        capture_output=True, text=True
+    )
+    if result.returncode != 0:
+        print(f"❌ 서명 실패:\n{result.stderr}")
+        return
+    print("🔏 서명 완료 → update.sig")
+    git_push(new_ver)
+    print(f"\n🎉 배포 완료! v{new_ver} 이(가) GitHub 에 업로드되었습니다.")
 
 if __name__ == "__main__":
     main()
