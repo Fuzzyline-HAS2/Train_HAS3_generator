@@ -19,6 +19,10 @@ void DataChanged()
     }
   } 
   if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
+    if((String)(const char*)my["device_state"] == "repaired"){
+      SendCmd(NEXTION_PAGES[PG_FIXED]);
+      LeftGenerator();
+    }
   }
   if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
