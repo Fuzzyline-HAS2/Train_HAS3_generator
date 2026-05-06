@@ -70,10 +70,6 @@ void BatteryPackCharge()
 { 
   Serial.println("BatteryPackCharge PTRFUNC");
   if((int)tag["battery_pack"] != 0 && (int)my["battery_pack"] < (int)my["max_battery_pack"]){    //발전기에 필요한 배터리팩 개수 > 플레이어가 소지한 배터리팩 개수
-    if((int)my["battery_pack"] + 1 == (int)my["max_battery_pack"])
-      SendCmd("wBatteryFull.en=1");
-    else
-      SendCmd("wBatteryCharge.en=1");
     Serial.println("BatteyPack Charge");
     has2wifi.Send((String)(const char*)tag["device_name"], "battery_pack", ("-1"));
     has2wifi.Send((String)(const char*)my["device_name"], "battery_pack", ("+1"));
@@ -123,10 +119,19 @@ void StartFinish()
   GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료3
   BlinkTimer.deleteTimer(blinkTimerId);
   Serial.println("Generator Fixed!");
-  SendCmd(NEXTION_PAGES[PG_FIXED]);
   has2wifi.Send((String)(const char*)my["device_name"], "device_state", "repaired");
   receiveMineOn = true;
   has2wifi.ReceiveMine();
+  if ((String)(const char*)my["device_state"] == "repaired_all") {
+    ptrRfidMode = WaitFunc;
+    ptrCurrentMode = WaitFunc;
+    EngineStop();
+    SendCmd(NEXTION_PAGES[PG_ESCAPE_OPEN]);
+    BlinkTimer.deleteTimer(blinkTimerId);
+    AllNeoOn(BLUE);
+    return;
+  }
+  SendCmd(NEXTION_PAGES[PG_FIXED]);
   LeftGenerator();
   AllNeoOn(BLUE);
   ptrCurrentMode = WaitFunc;
