@@ -39,27 +39,27 @@ void LeftGenerator(){
 
     if((int)my["left_generator"] == 5)
     {
-        sendCommand("pleftDevice.pic=170");
+        sendCommand("pleftDevice.pic=168");
         Serial.println("left Generator 5");
     }
     else if((int)my["left_generator"] == 4)
     {
-        sendCommand("pleftDevice.pic=171");
+        sendCommand("pleftDevice.pic=169");
         Serial.println("left Generator 4");
     }
     else if((int)my["left_generator"] == 3)
     {
-        sendCommand("pleftDevice.pic=172");
+        sendCommand("pleftDevice.pic=170");
         Serial.println("left Generator 3");
     }
     else if((int)my["left_generator"] == 2)
     {
-        sendCommand("pleftDevice.pic=173");
+        sendCommand("pleftDevice.pic=171");
         Serial.println("left Generator 2");
     }
     else if((int)my["left_generator"] == 1)
     {
-        sendCommand("pleftDevice.pic=174");
+        sendCommand("pleftDevice.pic=172");
         Serial.println("left Generator 1");
     }
 }

@@ -1,18 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(cp \"C:/Users/ok/TTGO_OTA_update_template/SignedOTA/SignedOTA.ino\" \"C:/Users/ok/generator/SignedOTA.ino\")",
-      "Bash(cp \"C:/Users/ok/TTGO_OTA_update_template/SignedOTA/public_key.h\" \"C:/Users/ok/generator/public_key.h\")",
-      "Bash(python -c \"import sys; print\\(sys.version\\)\")",
-      "Bash(where python:*)",
-      "Bash(\"C:/Users/ok/AppData/Local/Python/bin/python.exe\" --version)",
-      "Bash(\"C:/Users/ok/AppData/Local/Python/bin/python.exe\" \"C:/Users/ok/generator/scripts/deploy.py\")",
-      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\ok\\\\HAS2_Nextion_Code\\\\Generator\\\\Generator.HMI' -Pattern 'pg[A-Za-z]+' -AllMatches | ForEach-Object { \\\\$_.Matches } | ForEach-Object { \\\\$_.Value } | Sort-Object -Unique\")",
-      "Bash(git remote:*)",
-      "Bash(ls:*)"
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git branch *)"
     ]
   }
 }
