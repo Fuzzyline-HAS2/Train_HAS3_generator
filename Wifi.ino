@@ -19,8 +19,10 @@ void DataChanged()
     }
   } 
   if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
-    SendCmd(NEXTION_PAGES[PG_FIXED]);
-    LeftGenerator();
+    if((String)(const char*)my["game_state"] == "activate"){
+      SendCmd(NEXTION_PAGES[PG_FIXED]);
+      LeftGenerator();
+    }
   }
   if(receiveMineOn == false){
     if((String)(const char*)my["device_state"] != (String)(const char*)cur["device_state"]){  
@@ -85,7 +87,7 @@ void WaitFunc(){
 }
 void SettingFunc(void){
     Serial.println("SETTING");
-    SendCmd(NEXTION_PAGES[PG_BEFORE_TAGGER]);
+    SendCmd(NEXTION_PAGES[PG_PRE_TAGGER]);
     AllNeoOn(WHITE);
     EngineStop();
     encoderValue = 100;
