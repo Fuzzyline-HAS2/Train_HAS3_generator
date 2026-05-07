@@ -1,4 +1,10 @@
- ;/**
+#include <HAS2_Wifi.h>
+
+#include <HAS2_Wifi.h>
+
+#include <SecureOTA.h>
+
+/**
  * @file Done_Generator_code.ino
  * @author 김병준 (you@domain.com)
  * @brief
@@ -9,7 +15,7 @@
  *
  */
 
-#define FIRMWARE_VER 12
+#define FIRMWARE_VER 13
 #include "generator.h"
 
 void setup() {
