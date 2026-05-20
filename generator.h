@@ -7,9 +7,9 @@ const int rfid_num = 1; // 설치된 pn532의 개수
 //****************************************WIFI****************************************************************
 HAS2_Wifi has2wifi("http://172.30.1.43");
 SecureOTA ota(
-    "https://raw.githubusercontent.com/Fuzzyline-HAS2/generator/third_store/update.bin",
-    "https://raw.githubusercontent.com/Fuzzyline-HAS2/generator/third_store/version.txt",
-    "https://raw.githubusercontent.com/Fuzzyline-HAS2/generator/third_store/update.sig",
+    "https://raw.githubusercontent.com/Fuzzyline-HAS2/Train_HAS3_generator/third_store/update.bin",
+    "https://raw.githubusercontent.com/Fuzzyline-HAS2/Train_HAS3_generator/third_store/version.txt",
+    "https://raw.githubusercontent.com/Fuzzyline-HAS2/Train_HAS3_generator/third_store/update.sig",
     HMAC_SECRET,
     FIRMWARE_VER
 );
