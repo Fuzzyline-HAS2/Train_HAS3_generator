@@ -9,7 +9,7 @@ void DataChanged()
   }
   if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
     if((String)(const char*)my["game_state"] == "setting"){
-      SettingFunc();
+      ActivateFunc();
     }
     else if((String)(const char*)my["game_state"] == "ready"){
       ReadyFunc();

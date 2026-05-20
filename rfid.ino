@@ -67,18 +67,17 @@ void CheckingPlayers(uint8_t rfidData[32]) //어떤 카드가 들어왔는지 �
 
 
 void BatteryPackCharge()
-{ 
+{
   Serial.println("BatteryPackCharge PTRFUNC");
-  if((int)tag["battery_pack"] != 0 && (int)my["battery_pack"] < (int)my["max_battery_pack"]){    //발전기에 필요한 배터리팩 개수 > 플레이어가 소지한 배터리팩 개수
+  if((int)my["battery_pack"] < (int)my["max_battery_pack"]){
     Serial.println("BatteyPack Charge");
-    has2wifi.Send((String)(const char*)tag["device_name"], "battery_pack", ("-1"));
     has2wifi.Send((String)(const char*)my["device_name"], "battery_pack", ("+1"));
-    receiveMineOn = true; //ReceieveMine() 하기전에 true로 만들어서 기존데이터바뀌어도 DataChanged()실행 안되게 막음
+    receiveMineOn = true;
     has2wifi.ReceiveMine();
     delay(10);
     BatteryPackSend();
     delay(2000);
-    if((int)my["battery_pack"] == (int)my["max_battery_pack"]){ //배터리 충전완료 → 바로 스타터로
+    if((int)my["battery_pack"] == (int)my["max_battery_pack"]){
       Serial.println("Battery Full! → BatteryFinish");
       BatteryFinish();
     }
