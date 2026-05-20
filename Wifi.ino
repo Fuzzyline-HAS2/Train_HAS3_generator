@@ -19,8 +19,7 @@ void DataChanged()
     }
   } 
   if((String)(const char*)my["left_generator"] != (String)(const char*)cur["left_generator"]){
-    if((String)(const char*)my["game_state"] == "activate"){
-      SendCmd(NEXTION_PAGES[PG_FIXED]);
+    if((String)(const char*)my["device_state"] == "repaired"){
       LeftGenerator();
     }
   }
