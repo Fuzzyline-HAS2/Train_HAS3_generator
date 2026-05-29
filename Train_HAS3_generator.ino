@@ -15,7 +15,7 @@
  *
  */
 
-#define FIRMWARE_VER 14
+#define FIRMWARE_VER 15
 #include "Train_HAS3_generator.h"
 
 void setup() {
