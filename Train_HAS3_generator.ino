@@ -15,8 +15,8 @@
  *
  */
 
-#define FIRMWARE_VER 15
-#include "Train_HAS3_generator.h"
+#define FIRMWARE_VER 16
+#include "generator.h"
 
 void setup() {
     Serial.begin(115200);
@@ -32,6 +32,7 @@ void setup() {
     ota.setLogStream(Serial);
     ota.setOnSuccess([]() {
         Serial.println("[OTA] ✅ 업데이트 성공! 재부팅합니다...");
+        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "setting");
     });
     ota.setOnSkip([]() {
         Serial.println("[OTA] 이미 최신 버전입니다.");
