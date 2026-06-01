@@ -15,7 +15,7 @@
  *
  */
 
-#define FIRMWARE_VER 16
+#define FIRMWARE_VER 17
 #include "generator.h"
 
 void setup() {
@@ -27,7 +27,7 @@ void setup() {
     NextionInit();
     TimerInit();
 // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
- has2wifi.Setup("badland_shoot", "Has3");
+ has2wifi.Setup("badland_auto", "Has3");
 //    has2wifi.Setup("city");
     ota.setLogStream(Serial);
     ota.setOnSuccess([]() {
