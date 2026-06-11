@@ -15,7 +15,7 @@
  *
  */
 
-#define FIRMWARE_VER 18
+#define FIRMWARE_VER 19
 #include "generator.h"
 
 void setup() {
@@ -36,6 +36,7 @@ void setup() {
     });
     ota.setOnSkip([]() {
         Serial.println("[OTA] 이미 최신 버전입니다.");
+        has2wifi.Send((String)(const char*)my["device_name"], "device_state", "setting");
     });
     ptrCurrentMode = WaitFunc;
     ptrRfidMode = WaitFunc;
