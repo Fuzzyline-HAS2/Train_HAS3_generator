@@ -15,7 +15,7 @@
  *
  */
 
-#define FIRMWARE_VER 19
+#define FIRMWARE_VER 20
 #include "generator.h"
 
 void setup() {
