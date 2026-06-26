@@ -29,7 +29,7 @@
 #define MOTOR_INA2_PIN  4
 #define MOTOR_PWMA_PIN  22
 
-#define RELAY_PIN  14
+//#define RELAY_PIN  14
 
 #define BOXSWITCH_PIN  36
 

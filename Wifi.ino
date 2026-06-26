@@ -10,6 +10,8 @@ void DataChanged()
   if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
     if((String)(const char*)my["game_state"] == "setting"){
       ActivateFunc();
+      has2wifi.Send((String)(const char*)my["device_name"], "game_state", "activate");
+      has2wifi.Send((String)(const char*)my["device_name"], "device_state", "activate");
     }
     else if((String)(const char*)my["game_state"] == "ready"){
       ReadyFunc();
@@ -86,7 +88,7 @@ void WaitFunc(){
 }
 void SettingFunc(void){
     Serial.println("SETTING");
-    SendCmd(NEXTION_PAGES[PG_PRE_TAGGER]);
+    SendCmd(NEXTION_PAGES[PG_UNLOCKED]);
     AllNeoOn(WHITE);
     EngineStop();
     encoderValue = 100;
@@ -108,7 +110,9 @@ void ActivateFunc(void){
     detachInterrupt(encoderPinB);
     GameTimer.deleteTimer(gameTimerId);
     BlinkTimer.deleteTimer(blinkTimerId);
-    nfc[MAINPN532].SAMConfig();
+    if (rfid_init_complete[MAINPN532]) {
+        nfc[MAINPN532].SAMConfig();
+    }
     if((String)(const char*)my["device_state"] == "starter_finish"){
         AllNeoOn(GREEN);
         EngineSpeeed(250);

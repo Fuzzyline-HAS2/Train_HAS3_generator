@@ -1,4 +1,11 @@
 void StarterActivate(){
+    if (!rfid_init_complete[MAINPN532]) {
+        detachInterrupt(encoderPinA);
+        detachInterrupt(encoderPinB);
+        EngineSpeeed(0);
+        return;
+    }
+
     // RFID 체크는 200ms마다만 수행 (블로킹으로 인한 루프 지연 방지)
     static bool tagOnReader = false;
     static unsigned long lastRfidCheck = 0;
@@ -41,6 +48,6 @@ void StarterActivate(){
         NeoLightColor(STARTER, color[GREEN]);
         GameTimer.deleteTimer(gameTimerId);        //게임 타이머 종료
         BlinkTimer.deleteTimer(blinkTimerId);
-        BlinkTimerStart(CIRCUIT, YELLOW);
+        NeoLightColor(CIRCUIT, color[BLUE]);
     }
 }

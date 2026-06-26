@@ -5,7 +5,7 @@ void RfidInit()
   if (!(nfc[MAINPN532].getFirmwareVersion()))
   {
     Serial.println("PN532 FAIL : MAINPN532");
-    AllNeoOn(RED);
+    rfid_init_complete[MAINPN532] = false;
     //goto RestartPn532;
   }
   else
@@ -20,6 +20,10 @@ void RfidInit()
 
 void RfidLoopMain()
 {
+  if (!rfid_init_complete[MAINPN532]) {
+    return;
+  }
+
   uint8_t uid[3][7] = {{0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0}}; // Buffer to store the returned UID
@@ -41,24 +45,25 @@ void RfidLoopMain()
   }
 }
 void CheckingPlayers(uint8_t rfidData[32]) //어떤 카드가 들어왔는지 확인용
-{ 
+{
   String tagUser = "";
   for(int i = 0; i < 4; i++)    //GxPx 데이터만 배열에서 추출해서 string으로 저장
     tagUser += (char)rfidData[i];
-  Serial.println("tag_user_data : " + tagUser);     // 1. 태그한 플레이어의 역할과 생명칩갯수, 최대생명칩갯수 등 읽어오기
+  Serial.println("tag_user_data : " + tagUser);
   if(tagUser == "MMMM"){  //스태프카드 초기화
     ESP.restart();
   }
-  has2wifi.Receive(tagUser);                        // 2. 술래인지, 플레이어인지 구분
-  if((String)(const char*)tag["role"] == "player"){ // 3. 태그한 사용자가 플레이어고
-    Serial.println("Player Tagged");
-    ptrRfidMode();
-  }
-  else if((String)(const char*)tag["role"] == "tagger"){ // 3. 태그한 사용자가 플레이어고
+  // G9PX 값으로 로컬에서 역할 고정 판단: G9P1=술래, G9P2=유령, G9P3~G9P8=생존자
+  // 임시 테스트: G2P2도 생존자로 처리
+  if(tagUser == "G9P1"){
     Serial.println("Tagger Tagged");
   }
-  else if((String)(const char*)tag["role"] == "ghost"){ // 3. 태그한 사용자가 플레이어고
+  else if(tagUser == "G9P2"){
     Serial.println("Ghost Tagged");
+  }
+  else if((tagUser.substring(0,3) == "G9P" && tagUser[3] >= '3' && tagUser[3] <= '8') || tagUser == "G2P2"){
+    Serial.println("Player Tagged");
+    ptrRfidMode();
   }
   else{
     Serial.println("Wrong TAG");
