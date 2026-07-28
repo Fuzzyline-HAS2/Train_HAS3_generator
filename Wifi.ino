@@ -9,9 +9,7 @@ void DataChanged()
   }
   if((String)(const char*)my["game_state"] != (String)(const char*)cur["game_state"]){
     if((String)(const char*)my["game_state"] == "setting"){
-      ActivateFunc();
-      has2wifi.Send((String)(const char*)my["device_name"], "game_state", "activate");
-      has2wifi.Send((String)(const char*)my["device_name"], "device_state", "activate");
+      SettingFunc();
     }
     else if((String)(const char*)my["game_state"] == "ready"){
       ReadyFunc();
@@ -92,8 +90,7 @@ void SettingFunc(void){
     AllNeoOn(WHITE);
     EngineStop();
     encoderValue = 100;
-    detachInterrupt(encoderPinA);
-    detachInterrupt(encoderPinB);
+    EncoderDetach();
     GameTimer.deleteTimer(gameTimerId);
 
     BlinkTimer.deleteTimer(blinkTimerId);
@@ -106,8 +103,7 @@ void ActivateFunc(void){
     AllNeoOn(YELLOW);
     SendCmd(NEXTION_PAGES[PG_UNLOCKED]);
     BatteryPackSend();
-    detachInterrupt(encoderPinA);
-    detachInterrupt(encoderPinB);
+    EncoderDetach();
     GameTimer.deleteTimer(gameTimerId);
     BlinkTimer.deleteTimer(blinkTimerId);
     if (rfid_init_complete[MAINPN532]) {
@@ -137,8 +133,7 @@ void ReadyFunc(void){
     Serial.println("READY");
     AllNeoOn(RED);
     SendCmd(NEXTION_PAGES[PG_PRE_TAGGER]);
-    detachInterrupt(encoderPinA);
-    detachInterrupt(encoderPinB);
+    EncoderDetach();
     GameTimer.deleteTimer(gameTimerId);
 
     BlinkTimer.deleteTimer(blinkTimerId);
